@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ZuzaPrisijungimas extends ZuzaDraiveriai {
+public class ZuzaPrisijungimas extends Zuza.ZuzaDraiveriai {
     public ZuzaPrisijungimas(WebDriver driver) {
         super(driver);
     }

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class SKFiltrai extends ZuzaDraiveriai {
+public class SKFiltrai extends Zuza.ZuzaDraiveriai {
     public SKFiltrai(WebDriver driver) {
         super(driver);
     }

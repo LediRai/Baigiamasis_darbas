@@ -9,9 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ZuzaTest extends ZuzaDraiveriai {
+public class ZuzaTest extends Zuza.ZuzaDraiveriai {
+
 
         public ZuzaTest() {
+
             super(driver);
         }
 
@@ -21,13 +23,19 @@ public class ZuzaTest extends ZuzaDraiveriai {
         System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/chromedriver/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
-        ZuzaDraiveriai.driver = new ChromeDriver(options);
-        ZuzaDraiveriai.driver.manage().window().maximize();
+        Zuza.ZuzaDraiveriai.driver = new ChromeDriver(options);
+        Zuza.ZuzaDraiveriai.driver.manage().window().maximize();
     }
+
+//    @Test
+//    public void registracijosPasiekimas(){
+//            //papildyti
+//    }
 
     @Test
     public void A_blogasPrisijungimas(){
         System.out.println("pirmas Testas");
+        Zuza.ZuzaDraiveriai ZuzaDraiveriai;
         ZuzaDraiveriai.zuzaPuslapis();
         //ZuzaPrisijungimas.slapukas();
         ZuzaPrisijungimas.prisijungimas("pumabera@gmaiil.com", "baigiamasis");
@@ -42,7 +50,8 @@ public class ZuzaTest extends ZuzaDraiveriai {
 
     @AfterClass
     public static void tearDown() {
-        driver.quit();
+
+            driver.quit();
     }
 }
 
