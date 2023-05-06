@@ -6,9 +6,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Registracija extends Zuza.ZuzaDraiveriai {
+public class ZuzaRegistracija extends Zuza.ZuzaDraiveriai {
 
-    public Registracija (WebDriver driver) {
+    public ZuzaRegistracija (WebDriver driver) {
         super(driver);
     }
 
