@@ -13,7 +13,6 @@ public class ZuzaTest extends Zuza.ZuzaDraiveriai {
 
 
         public ZuzaTest() {
-
             super(driver);
         }
 
@@ -27,25 +26,37 @@ public class ZuzaTest extends Zuza.ZuzaDraiveriai {
         Zuza.ZuzaDraiveriai.driver.manage().window().maximize();
     }
 
-//    @Test
-//    public void registracijosPasiekimas(){
-//            //papildyti
-//    }
+    @Test
+    public void A_registracijosPasiekimas(){
+            ZuzaRegistracija.slapukas();
+            ZuzaRegistracija.prisiregistruoti();
+    }
 
     @Test
-    public void A_blogasPrisijungimas(){
-        System.out.println("pirmas Testas");
-        Zuza.ZuzaDraiveriai ZuzaDraiveriai;
+    public void B_blogasPrisijungimas(){
         ZuzaDraiveriai.zuzaPuslapis();
-        //ZuzaPrisijungimas.slapukas();
         ZuzaPrisijungimas.prisijungimas("pumabera@gmaiil.com", "baigiamasis");
     }
 
     @Test
-    public void B_prisijungimas(){
-        System.out.println("antras Testas");
+    public void C_prisijungimas(){
         ZuzaDraiveriai.zuzaPuslapis();
-        ZuzaPrisijungimas.prisijungimas("pumabera@gmail.com", "baigiamasis");
+        ZuzaPrisijungimas.prisijungimas("Nakciausias5098@gmail.com", "Grazuma8597");
+    }
+
+//    @Test
+//    public void D_paieska(){
+//        PaieskosLaukas.zuzaPaieska();
+//    }
+//
+//    @Test
+//    public void E_pirkiniai(){
+//        PirkiniuKrepselis.zuzaPirkiniai();
+//    }
+
+    @Test
+    public void F_naikinamaPaskyra(){
+            ZuzaRegistracija.paskyrosNaikinimas();
     }
 
     @AfterClass
