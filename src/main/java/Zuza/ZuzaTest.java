@@ -13,6 +13,7 @@ public class ZuzaTest extends Zuza.ZuzaDraiveriai {
 
 
         public ZuzaTest() {
+
             super(driver);
         }
 
