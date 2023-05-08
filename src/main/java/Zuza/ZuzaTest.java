@@ -19,7 +19,8 @@ public class ZuzaTest extends Zuza.ZuzaDraiveriai {
 
     @BeforeClass
     public static void setUp() {
-        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/chromedriver/chromedriver");
+//        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/chromedriver/chromedriver");
+        System.setProperty("webdriver.chrome.driver\", \"C:/Users/XPS 15/Downloads/chromedriver_win32/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         Zuza.ZuzaDraiveriai.driver = new ChromeDriver(options);
