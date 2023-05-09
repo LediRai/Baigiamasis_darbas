@@ -66,12 +66,13 @@ public class ZuzaTest extends Zuza.ZuzaDraiveriai {
    @Test
    public void G_megstamiausiuPirkiniuKrepselis() throws InterruptedException {
             ZuzaMegstamiausiuSarasas.MegstamiausiuSarasas();
-       ZuzaMegstamiausiuSarasas.MegstamiausiuSarasoNaikinimas();
+
    }
 
    @Test
-   public void H_naikinamasMegstamiausiuPirkiniuSarasas(){
-            ZuzaMegstamiausiuSarasas.MegstamiausiuSarasoNaikinimas();
+   public void H_naikinamasMegstamiausiuPirkiniuSarasas() throws InterruptedException {
+       ZuzaMegstamiausiuSarasas.MegstamiausiuSarasas();
+       ZuzaMegstamiausiuSarasas.MegstamiausiuSarasoNaikinimas();
    }
 
 
