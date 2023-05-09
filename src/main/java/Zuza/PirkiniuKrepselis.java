@@ -19,14 +19,13 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
 
     public static void zuzaPirkiniai() {
 
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
         JavascriptExecutor jse = (JavascriptExecutor) driver;
 
-        String[] paieska = { "salmas", "Kompiuteris", "Televizorius", "virykle", "pinigine"};
+        String[] paieska = {"sketis", "Kompiuteris", "Televizorius", "virykle", "pinigine"};
 
         // prekiu paieskos ciklas per masyvo elementus
         for (String i : paieska) {
@@ -38,9 +37,10 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
             ieskoti.sendKeys(i);
             ieskoti.submit();
             try {
-                Thread.sleep(5000);
+                Thread.sleep(3000);
                 List<WebElement> pirkti = driver.findElements(By.className("card__wrapper"));
                 jse.executeScript("arguments[0].scrollIntoView();", pirkti.get(0));
+                Thread.sleep(2000);
                 wait.until(ExpectedConditions.elementToBeClickable(pirkti.get(0)));
                 pirkti.get(0).click();
                 Thread.sleep(1000);
@@ -53,7 +53,6 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
                 pridetiIKrepseli.click();
                 Thread.sleep(3000);
 
-
                 WebElement testiApsipirkima = driver.findElement(By.xpath("//a[contains(text(),'tęsti apsipirkimą')]"));
                 wait.until(ExpectedConditions.elementToBeClickable(testiApsipirkima));
                 testiApsipirkima.click();
@@ -62,9 +61,34 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
             } catch (Exception e) {
                 System.out.println("Testas nepavyksta: " + e.getMessage());
             }
+        }
+        try {
+            // tikrinama kas yra sudeta i pirkiniu krepseli
+            WebElement prekiuSarasas = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[4]/div[1]/a[3]"));
+            // paslenkamas puslapis i virsu kad butu matomas elementas ir ji paspaudziam
+            jse.executeScript("arguments[0].scrollIntoView();", prekiuSarasas);
+            Thread.sleep(2000);
+            wait.until(ExpectedConditions.elementToBeClickable(prekiuSarasas));
+            prekiuSarasas.click();
+            Thread.sleep(2000);
 
+            // atspausdinama informacija esanti prekiu krepselio liste
+            List<WebElement> krepselioSarasas = driver.findElements(By.xpath("//div[@class='basket__product-box']//form"));
+        System.out.println(krepselioSarasas.size());    //ziuriu kikek elementu yra bloke
+            for (int n = 0; n < krepselioSarasas.size(); n++) {
+                System.out.println(krepselioSarasas.get(n).getText());
+            }
+
+            List<WebElement> productList = driver.findElements(By.cssSelector("div.basket__product-box form"));
+
+            // spaudziamas kainikimo mygtukas
+            for (WebElement product : productList) {
+                WebElement addButton = product.findElement(By.cssSelector("body > main > div.basket__container.container > div.basket__product-box > form:nth-child(1) > button > svg > use"));
+                addButton.click();
+                Thread.sleep(2000);
+            }
+        } catch (Exception e) {
+            System.out.println("Pirkiniu krepselis neatsidaro" + e.getMessage());
         }
     }
-
-
 }

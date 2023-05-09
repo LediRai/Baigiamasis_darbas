@@ -1,13 +1,16 @@
 package Zuza;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Objects;
+
 
 public class ZuzaPrisijungimas extends Zuza.ZuzaDraiveriai {
     public ZuzaPrisijungimas(WebDriver driver) {
@@ -32,11 +35,7 @@ public class ZuzaPrisijungimas extends Zuza.ZuzaDraiveriai {
                 zuzaPrisijungimas.click();
                 WebElement zuzaAtsijungimas = wait.until(ExpectedConditions.visibilityOfElementLocated(atsijungti));
                 zuzaAtsijungimas.click();
-
-                // Atsijungimo aprasymas
-
             }
-
             zuzaPrisijungimas.click();
             Thread.sleep(2000);
 

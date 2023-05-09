@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ZuzaRegistracija extends ZuzaDraiveriai {
@@ -38,6 +39,10 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
 
     public static void prisiregistruoti() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        WebElement chatWidget = driver.findElement(By.id("chat-widget-container"));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].remove()", chatWidget);
+
         try {
 
             WebElement ieiti = wait.until(ExpectedConditions.visibilityOfElementLocated(prisijungtiMygtukas));
@@ -83,6 +88,7 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
         JavascriptExecutor jse = (JavascriptExecutor) driver;
+
         try {
             WebElement ieiti = wait.until(ExpectedConditions.visibilityOfElementLocated(profylioMygtukas));
             ieiti.click();
@@ -104,7 +110,5 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
         } catch (Exception n){
             System.out.println("paskyra nepanaikinta" + n.getMessage());
         }
-
-
     }
 }

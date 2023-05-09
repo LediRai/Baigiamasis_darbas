@@ -19,9 +19,8 @@ public class PaieskosLaukas extends ZuzaDraiveriai {
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
 
-        String[] paieska = { "salmas", "Kompiuteris", "Televizorius", "virykle", "pinigine"};
+        String[] paieska = { "salmas", "laikrodis", "krosnis", "veidrodis", "pinigine"};
 
         // prekiu paieskos ciklas per masyvo elementus
         for (String i : paieska) {
@@ -36,7 +35,7 @@ public class PaieskosLaukas extends ZuzaDraiveriai {
             } catch (Exception e) {
                 System.out.println("Testas nepavyksta: " + e.getMessage());
             }
-
         }
-    }}
+    }
+}
 
