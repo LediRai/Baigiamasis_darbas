@@ -10,14 +10,16 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ZuzaRegistracija extends ZuzaDraiveriai {
 
+
+
     public ZuzaRegistracija(WebDriver driver) {
         super(driver);
     }
+
 
     private final static By prisijungtiMygtukas = By.xpath("/html/body/div[1]/div[2]/div/div/div[4]/div[1]/a[1]");
     private final static By registruotisMygtukas = By.xpath("/html/body/main/div[1]/div/div[2]/div[1]/div[1]/button");
@@ -37,13 +39,14 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
         slapukas.click();
     }
 
-    public static void prisiregistruoti() {
+    public static void prisiregistruoti(String elPastas, String slaptazodis) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         WebElement chatWidget = driver.findElement(By.id("chat-widget-container"));
         ((JavascriptExecutor)driver).executeScript("arguments[0].remove()", chatWidget);
 
         try {
+
 
             WebElement ieiti = wait.until(ExpectedConditions.visibilityOfElementLocated(prisijungtiMygtukas));
             ieiti.click();
@@ -54,16 +57,16 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
             Thread.sleep(2000);
 
             WebElement ivestiElPasta1 = wait.until(ExpectedConditions.visibilityOfElementLocated(ivestiElPasta));
-            ivestiElPasta1.sendKeys("Nakciausias5098@gmail.com");
+            ivestiElPasta1.sendKeys(elPastas);
             Thread.sleep(2000);
 
             WebElement ivestiSlaptazodi1 = wait.until(ExpectedConditions.visibilityOfElementLocated(ivestiSlaptazodi));
-            ivestiSlaptazodi1.sendKeys("Grazuma8597");
+            ivestiSlaptazodi1.sendKeys(slaptazodis);
             Thread.sleep(2000);
 
 
             WebElement ivestiSlaptazodi3 = wait.until(ExpectedConditions.visibilityOfElementLocated(ivestiSlaptazodi2));
-            ivestiSlaptazodi3.sendKeys("Grazuma8597");
+            ivestiSlaptazodi3.sendKeys(slaptazodis);
             Thread.sleep(2000);
 
 
@@ -82,6 +85,8 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
         }
 
     }
+
+
     public static void paskyrosNaikinimas(){
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
@@ -111,4 +116,6 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
             System.out.println("paskyra nepanaikinta" + n.getMessage());
         }
     }
+
+
 }
