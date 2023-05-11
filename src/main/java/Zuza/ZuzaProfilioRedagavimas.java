@@ -1,9 +1,6 @@
 package Zuza;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -52,35 +49,40 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             // gimimos datos ivedimas - data susiveda, bet ties pavarde ir telefonu metamos klaidos
             WebElement gimimoData = driver.findElement(By.xpath("//input[@placeholder='YYYY-MM-DD']"));
             gimimoData.click();
-            gimimoData.sendKeys("05");
+            gimimoData.sendKeys("20");
             gimimoData.sendKeys(Keys.ARROW_LEFT);
             Thread.sleep(1000);
-            gimimoData.sendKeys("02");
+            gimimoData.sendKeys("04");
             gimimoData.sendKeys(Keys.ARROW_LEFT);
             Thread.sleep(1000);
             gimimoData.sendKeys(Keys.ARROW_LEFT);
-            gimimoData.sendKeys("1990");
+            gimimoData.sendKeys("1985");
             gimimoData.submit();
 
             // vardo ivedimas
             WebElement ivestiVarda = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[4]/input"));
             ivestiVarda.clear();
-            ivestiVarda.sendKeys("Zuziukas");
+            ivestiVarda.sendKeys("Varlius");
             Thread.sleep(1000);
 
             //pavardes ivedimas
             WebElement ivestiPavarde = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"profile-update\"]/div[5]/input")));
             ivestiPavarde.clear();
-            ivestiPavarde.sendKeys("Zuzanas");
+            ivestiPavarde.sendKeys("Varliukas");
             Thread.sleep(1000);
+            ivestiPavarde.submit();
+
 
             // telefono ivedimas
             WebElement ivestiTelefona = driver.findElement(By.xpath("//input[@name='phone']"));
             ivestiTelefona.sendKeys("+37065547965");
-            Thread.sleep(1000);
+            Thread.sleep(2000);
+            ivestiTelefona.submit();
+            ivestiTelefona.submit();
+
 
             // pakeitimu saugojimas
-            WebElement issaugotiPakeitimus = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("form[id='profile-update'] button[type='submit']")));
+            WebElement issaugotiPakeitimus = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("form[id='profile-update'] button[type='submit']")));
             issaugotiPakeitimus.click();
 
 
@@ -104,21 +106,19 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             WebElement naujoSlaptazodzioIvedimas2 = driver.findElement(By.xpath("//*[@id=\"password-update\"]/div[3]/input"));
             naujoSlaptazodzioIvedimas2.sendKeys(naujasSlaptazodis);
 
-            WebElement slaptazodzioPakeitimoIssaugojimas = driver.findElement(By.cssSelector("form[id='password-update'] button[type='submit']"));
+            WebElement slaptazodzioPakeitimoIssaugojimas = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/div/div[3]/form/button"));
+            Thread.sleep(2000);
             slaptazodzioPakeitimoIssaugojimas.click();
-            Thread.sleep(1000);
+
 
         } catch (Exception r) {
             System.out.println("Slaptazodzio keitimas nesekmingas: " + r.getMessage());
         }
 
-
-
-
-
-
     }
 }
+
+
 
 
 
