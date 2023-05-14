@@ -31,11 +31,9 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             WebElement paspaustiMygtuka = driver.findElement(profilioRedagavimoMygtukas);
             paspaustiMygtuka.click();
 
-
             WebElement lytiesLokacija = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/" +
                     "div[2]/div/div[1]/button"));
             lytiesLokacija.click();
-
 
             WebElement lytisVyras = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[2]/" +
                     "div/div[2]/div/div/div[2]"));
@@ -55,15 +53,6 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             gimimoData.click();
             jse.executeScript("arguments[0].value='1985-04-20';", gimimoData);
 
-//            gimimoData.sendKeys("20");
-//            gimimoData.sendKeys(Keys.ARROW_LEFT);
-//            Thread.sleep(1000);
-//            gimimoData.sendKeys("04");
-//            gimimoData.sendKeys(Keys.ARROW_LEFT);
-//            Thread.sleep(1000);
-//            gimimoData.sendKeys(Keys.ARROW_LEFT);
-//            gimimoData.sendKeys("1985");
-//            gimimoData.submit();
 
             // vardo ivedimas
             WebElement ivestiVarda = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[4]/" +
@@ -84,7 +73,6 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             WebElement ivestiTelefona = driver.findElement(By.xpath("//input[@name='phone']"));
             ivestiTelefona.sendKeys("+37065547965");
             Thread.sleep(2000);
-            ivestiTelefona.submit();
 
 
             // pakeitimu saugojimas
@@ -95,11 +83,8 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             issaugotiPakeitimus.click();
             Thread.sleep(3000);
 
-
         } catch (Exception s) {
             System.out.println("Paskyros redagavimas negalimas: " + s.getMessage());
-
-
         }
     }
 

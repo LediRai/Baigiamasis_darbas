@@ -15,15 +15,19 @@ public class ZuzaAdresai extends ZuzaDraiveriai{
     }
     private final static By prisijungti = By.xpath("/html/body/div[1]/div[2]/div/div/div[4]/div[1]/a[1]");
 
-    private final static By pristatymoAdresasai = By.cssSelector("body > main > div.user__container.container > div.user__aside > nav > ul > li:nth-child(3) > a > span");
-    private final static By naujasAdresas = By.cssSelector("body > main > div.user__container.container > div.user__main > div > div > a");
+    private final static By pristatymoAdresasai = By.cssSelector("body > main > div.user__container.container > " +
+            "div.user__aside > nav > ul > li:nth-child(3) > a > span");
+    private final static By naujasAdresas = By.cssSelector("body > main > div.user__container.container > " +
+            "div.user__main > div > div > a");
     private final static By fVardas = By.cssSelector("#deliveries-update > div:nth-child(4) > input");
     private final static By fPavarde = By.cssSelector("#deliveries-update > div:nth-child(5) > input");
     private final static By fPastas = By.cssSelector("#deliveries-update > div:nth-child(6) > input");
     private final static By fTelNr = By.cssSelector("#deliveries-update > div:nth-child(7) > input");
     private final static By fMiestas = By.cssSelector("#deliveries-update > div:nth-child(8) > div:nth-child(2) > input");
-    private final static By fAdresas = By.cssSelector("#deliveries-update > div:nth-child(8) > div.user-delivery__box.form-profile__box.form-group.js--person-address > input");
-    private final static By fPastoKodas = By.cssSelector("#deliveries-update > div:nth-child(8) > div.user-delivery__box--code.form-profile__box.form-group.js--person-address > input");
+    private final static By fAdresas = By.cssSelector("#deliveries-update > div:nth-child(8) > div." +
+            "user-delivery__box.form-profile__box.form-group.js--person-address > input");
+    private final static By fPastoKodas = By.cssSelector("#deliveries-update > div:nth-child(8) > " +
+            "div.user-delivery__box--code.form-profile__box.form-group.js--person-address > input");
     private final static By fMygtukas = By.cssSelector("#deliveries-update > button");
 
         // fizinio asmens adresas
@@ -62,7 +66,6 @@ public class ZuzaAdresai extends ZuzaDraiveriai{
             pastoKodasF.sendKeys("41820");
             Thread.sleep(2000);
 
-            //neveikia
             WebElement irasymoMygtukas = wait.until(ExpectedConditions.elementToBeClickable(fMygtukas));
             jse.executeScript("arguments[0].scrollIntoView();", irasymoMygtukas);
             Thread.sleep(1000);

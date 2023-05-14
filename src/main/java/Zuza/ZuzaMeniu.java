@@ -1,6 +1,7 @@
 package Zuza;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,36 +15,52 @@ public class ZuzaMeniu extends ZuzaDraiveriai {
         super(driver);
     }
 
+   static JavascriptExecutor jse = (JavascriptExecutor) driver;
+
     public static void testuoju() {
 
-        ArrayList<VerificationLink> link = new ArrayList<VerificationLink>();
-        link.add(new VerificationLink("Apmokėjimas", "https://zuza.lt/pages/apmokejimas/"));
-        link.add(new VerificationLink("Pristatymas", "https://zuza.lt/pages/pristatymas/"));
-        link.add(new VerificationLink("Grąžinimas ir garantija", "https://zuza.lt/return-and-warranty/"));
-        link.add(new VerificationLink("Apie Zuza.lt", "https://zuza.lt/pages/apie-zuzalt/"));
-        link.add(new VerificationLink("Karjera", "https://zuza.lt/pages/karjera/"));
-        link.add(new VerificationLink("KLIX Mokėjimas dalimis", "https://zuza.lt/pages/klix-mokejimas-dalimis/"));
-        link.add(new VerificationLink("Kontaktai", "https://zuza.lt/kontaktai/"));
-        link.add(new VerificationLink("Prekių pristatymas", "https://zuza.lt/pages/prekiu-pristatymas/"));
-        link.add(new VerificationLink("Pirkimo sąlygos ir taisyklės", "hhttps://zuza.lt/pages/pirkimo-salygos-ir-taisykles/"));
-        link.add(new VerificationLink("Privatumo politika", "https://zuza.lt/pages/privatumo-politika/"));
-        link.add(new VerificationLink("Atsiliepimai", "https://zuza.lt/pages/atsiliepimai/"));
+        ArrayList<tikrinamasLinkas> virsus = new ArrayList<tikrinamasLinkas>();
+        virsus.add(new tikrinamasLinkas("Apmokėjimas", "https://zuza.lt/pages/apmokejimas/"));
+        virsus.add(new tikrinamasLinkas("Pristatymas", "https://zuza.lt/pages/pristatymas/"));
+        virsus.add(new tikrinamasLinkas("Grąžinimas ir garantija", "https://zuza.lt/return-and-warranty/"));
+        virsus.add(new tikrinamasLinkas("Apie Zuza.lt", "https://zuza.lt/pages/apie-zuzalt/"));
+        virsus.add(new tikrinamasLinkas("Karjera", "https://zuza.lt/pages/karjera/"));
+        virsus.add(new tikrinamasLinkas("KLIX Mokėjimas dalimis", "https://zuza.lt/pages/klix-mokejimas-dalimis/"));
+        virsus.add(new tikrinamasLinkas("Kontaktai", "https://zuza.lt/kontaktai/"));
+
+        ArrayList<tikrinamasLinkas> apacia = new ArrayList<tikrinamasLinkas>();
+        apacia.add(new tikrinamasLinkas("Prekių pristatymas", "https://zuza.lt/pages/prekiu-pristatymas/"));
+        apacia.add(new tikrinamasLinkas("Pirkimo sąlygos ir taisyklės", "https://zuza.lt/pages/pirkimo-salygos-ir-taisykles/"));
+        apacia.add(new tikrinamasLinkas("Privatumo politika", "https://zuza.lt/pages/privatumo-politika/"));
+        apacia.add(new tikrinamasLinkas("Atsiliepimai", "https://zuza.lt/pages/atsiliepimai/"));
 
 
-        // Access and use array elements
-        for (VerificationLink print : link) {
-            verifyNavigationLink(driver, print.getLinkLabel(), print.getLinkUrl());
-            // System.out.println("Name: " + print.getLinkLabel() + ", url: " + print.getLinkUrl());
+
+        try{
+            for (tikrinamasLinkas tikrinimas : virsus) {
+                verifyNavigationLink(driver, tikrinimas.getLinkLabel(), tikrinimas.getLinkUrl());
+            }
+            jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            Thread.sleep(2000);
+
+            for (tikrinamasLinkas tikrinimas : apacia) {
+                verifyNavigationLink(driver, tikrinimas.getLinkLabel(), tikrinimas.getLinkUrl());
+            }
+        }catch (Exception e) {
+            System.out.println("neveikia");
         }
+
+
     }
 
+
     // apsirasomos klases
-    static class VerificationLink {
+    static class tikrinamasLinkas {
         private String linkLabel;
         private String linkUrl;
 
         //konstruktorius
-        public VerificationLink(String linkLabel, String linkUrl) {
+        public tikrinamasLinkas(String linkLabel, String linkUrl) {
             this.linkLabel = linkLabel;
             this.linkUrl = linkUrl;
         }
