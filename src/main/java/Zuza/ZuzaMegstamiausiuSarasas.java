@@ -53,11 +53,10 @@ public class ZuzaMegstamiausiuSarasas extends ZuzaDraiveriai {
             } catch (Exception e) {
                 System.out.println("Negalima prideti prekes prie megstamiausiu: " + e.getMessage());
             }
+
             driver.navigate().back();
             driver.navigate().back();
             Thread.sleep(3000);
-
-
         }
     }
 
