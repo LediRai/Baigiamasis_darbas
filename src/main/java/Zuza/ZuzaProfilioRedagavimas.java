@@ -42,40 +42,23 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             lytisVyras.click();
 
 
-//            Select lytiesPasirinkimai = new Select(driver.findElement(lytiesPasirinkimas));
-//            lytiesPasirinkimai.click();
-//            String pasirinkimas = "Vyriškas";
-//            lytiesPasirinkimai.selectByVisibleText("Vyriškas");
-//            var selectedOptions = lytiesPasirinkimai.getAllSelectedOptions();
-//            assertEquals(1, selectedOptions.size());
-//            assertEquals(pasirinkimas, selectedOptions.get(0).getAttribute("value"));
-
-            // gimimos datos ivedimas - data susiveda, bet ties pavarde ir telefonu metamos klaidos
+            // gimimos datos ivedimas
             WebElement gimimoData = driver.findElement(By.xpath("//input[@placeholder='YYYY-MM-DD']"));
             gimimoData.click();
             jse.executeScript("arguments[0].value='1985-04-20';", gimimoData);
 
-//            gimimoData.sendKeys("20");
-//            gimimoData.sendKeys(Keys.ARROW_LEFT);
-//            Thread.sleep(1000);
-//            gimimoData.sendKeys("04");
-//            gimimoData.sendKeys(Keys.ARROW_LEFT);
-//            Thread.sleep(1000);
-//            gimimoData.sendKeys(Keys.ARROW_LEFT);
-//            gimimoData.sendKeys("1985");
-//            gimimoData.submit();
 
             // vardo ivedimas
             WebElement ivestiVarda = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[4]/" +
                     "input"));
             ivestiVarda.clear();
-            ivestiVarda.sendKeys("Varlius");
+            ivestiVarda.sendKeys("Zuzius");
             Thread.sleep(1000);
 
             //pavardes ivedimas
             WebElement ivestiPavarde = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"profile-update\"]/div[5]/input")));
             ivestiPavarde.clear();
-            ivestiPavarde.sendKeys("Varliukas");
+            ivestiPavarde.sendKeys("Zuzauskas");
             Thread.sleep(1000);
             ivestiPavarde.submit();
 
@@ -124,7 +107,7 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
 
 
             } catch (Exception r) {
-                System.out.println("Slaptazodzio keitimas nesekmingas: " + r.getMessage());
+                System.out.println("Slaptažodžio keitimas nesėkmingas: " + r.getMessage());
             }
 
         }
