@@ -1,12 +1,15 @@
 package Zuza;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
@@ -51,6 +54,16 @@ public class ZuzaPrisijungimas extends Zuza.ZuzaDraiveriai {
 
             WebElement mygtukas = wait.until(ExpectedConditions.elementToBeClickable(prisijungimoMygtukas));
            mygtukas.click();
+           
+            File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            Path destinationPath = Path.of("screenshottest.png");
+            try {
+                Files.copy(screenshotFile.toPath(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Screenshot saved to: " + destinationPath.toAbsolutePath());
+            } catch (IOException e) {
+                System.out.println("Failed to save screenshot: " + e.getMessage());
+            }
+
             Thread.sleep(2000);
         } catch (Exception e) {
             System.out.println("neveikia prisijungimo mygtukas");
