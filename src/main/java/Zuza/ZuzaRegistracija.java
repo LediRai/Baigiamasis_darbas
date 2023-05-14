@@ -15,11 +15,9 @@ import java.util.NoSuchElementException;
 public class ZuzaRegistracija extends ZuzaDraiveriai {
 
 
-
     public ZuzaRegistracija(WebDriver driver) {
         super(driver);
     }
-
 
     private final static By prisijungtiMygtukas = By.xpath("/html/body/div[1]/div[2]/div/div/div[4]/div[1]/a[1]");
     private final static By registruotisMygtukas = By.xpath("/html/body/main/div[1]/div/div[2]/div[1]/div[1]/button");
@@ -28,16 +26,17 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
     private final static By ivestiSlaptazodi2 = By.xpath("//*[@id=\"form-signup\"]/div[3]/input");
     private final static By sutiktiSuTaisyklemis = By.xpath("//*[@id=\"form-signup\"]/div[4]/label/span[1]");
     private final static By uzsiregistruoti = By.xpath("//*[@id=\"form-signup\"]/button");
-
     private final static By profylioMygtukas = By.xpath("/html/body/div[1]/div[2]/div/div/div[4]/div[1]/a[1]");
     private final static By naikinimasSlaptaz = By.xpath("/html/body/main/div[2]/div[2]/div/form/div/input");
     private final static By redaguotiProfili = By.xpath("/html/body/main/div[2]/div[2]/div/a");
     private final static By mygtukasSalinti = By.xpath("/html/body/main/div[2]/div[2]/div/form/button");
 
+
     public static void slapukas() {
         WebElement slapukas = driver.findElement(By.cssSelector("body > footer > div.footer__cookies.cookies.js--cookies.active > div > button"));
         slapukas.click();
     }
+
 
     public static void prisiregistruoti(String elPastas, String slaptazodis) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -45,8 +44,8 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
         WebElement chatWidget = driver.findElement(By.id("chat-widget-container"));
         ((JavascriptExecutor)driver).executeScript("arguments[0].remove()", chatWidget);
 
-        try {
 
+        try {
 
             WebElement ieiti = wait.until(ExpectedConditions.visibilityOfElementLocated(prisijungtiMygtukas));
             ieiti.click();
@@ -64,26 +63,21 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
             ivestiSlaptazodi1.sendKeys(slaptazodis);
             Thread.sleep(2000);
 
-
             WebElement ivestiSlaptazodi3 = wait.until(ExpectedConditions.visibilityOfElementLocated(ivestiSlaptazodi2));
             ivestiSlaptazodi3.sendKeys(slaptazodis);
             Thread.sleep(2000);
-
 
             WebElement taisykles = wait.until(ExpectedConditions.visibilityOfElementLocated(sutiktiSuTaisyklemis));
             taisykles.click();
             Thread.sleep(2000);
 
-
             WebElement registruotisPaskutinisEtapas = wait.until(ExpectedConditions.visibilityOfElementLocated(uzsiregistruoti));
             registruotisPaskutinisEtapas.click();
             Thread.sleep(2000);
 
-
         } catch (Exception e) {
             System.out.println("Registracija nebuvo sėkminga" + e.getMessage());
         }
-
     }
 
 
@@ -95,6 +89,7 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
 
         try {
+
             WebElement ieiti = wait.until(ExpectedConditions.visibilityOfElementLocated(profylioMygtukas));
             ieiti.click();
             Thread.sleep(2000);
@@ -112,10 +107,10 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
             Thread.sleep(1000);
             panaikintiMygtukas.click();
             Thread.sleep(2000);
+
         } catch (Exception n){
             System.out.println("paskyra nepanaikinta" + n.getMessage());
         }
     }
-
 
 }
