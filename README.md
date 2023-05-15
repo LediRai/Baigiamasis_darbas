@@ -55,9 +55,11 @@ Testų paleidimas užtikrinamas šiame projekte naudojant ir įdiegiant naujausi
 Šią saugyklą reikia nuklonuoti jūsų Java paleidimo mašinoje:
 https://github.com/LediRai/Baigiamasis_darbas
 ![clone](clone.png)
+
 2. Pasiekite projekto direktoriją:
 ![CD](CD.png)
-3. Įdiekite projekto integracinius elementus naudodami „Maven“ įrankį:
+3. 
+4. Įdiekite projekto integracinius elementus naudodami „Maven“ įrankį:
 ![mvn](mvn.png)
 
 
