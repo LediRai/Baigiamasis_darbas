@@ -2,23 +2,19 @@ package Zuza;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.NoSuchElementException;
 
 public class PaieskosLaukas extends ZuzaDraiveriai {
+
     public PaieskosLaukas(WebDriver driver) {
         super(driver);
     }
 
     public static void zuzaPaieska() {
-
-        Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(NoSuchElementException.class);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
         String[] paieska = { "salmas", "laikrodis", "krosnis", "veidrodis", "pinigine"};
 
@@ -31,6 +27,10 @@ public class PaieskosLaukas extends ZuzaDraiveriai {
                 ieskoti.clear();
                 ieskoti.sendKeys(i);
                 ieskoti.submit();
+
+                WebElement iskomosPrekesMatomumas = driver.findElement(By.className("card-box__heading"));
+                jsExecutor.executeScript("arguments[0].scrollIntoView(true);", iskomosPrekesMatomumas);
+                Thread.sleep(1000);
 
             } catch (Exception e) {
                 System.out.println("Testas nepavyksta: " + e.getMessage());
