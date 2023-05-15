@@ -12,8 +12,10 @@ import static org.junit.Assert.assertEquals;
 public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
 
 
+    public final static By profilioPasiekimas = By.cssSelector(".tactic__circle");
     public final static By profilioRedagavimoMygtukas = By.cssSelector("body > main > div.user__container.container > div.user__main > div > a");
     static JavascriptExecutor jse = (JavascriptExecutor) driver;
+
 
 
     public ZuzaProfilioRedagavimas(WebDriver driver) {
@@ -28,15 +30,16 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
 
         try {
 
+            WebElement profilis = driver.findElement(profilioPasiekimas);
+            profilis.click();
+
             WebElement paspaustiMygtuka = driver.findElement(profilioRedagavimoMygtukas);
             paspaustiMygtuka.click();
 
-            WebElement lytiesLokacija = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/" +
-                    "div[2]/div/div[1]/button"));
+            WebElement lytiesLokacija = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[2]/div/div[1]/button"));
             lytiesLokacija.click();
 
-            WebElement lytisVyras = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[2]/" +
-                    "div/div[2]/div/div/div[2]"));
+            WebElement lytisVyras = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[2]/div/div[2]/div/div/div[2]"));
             lytisVyras.click();
 
 
@@ -55,8 +58,7 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
 
 
             // vardo ivedimas
-            WebElement ivestiVarda = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[4]/" +
-                    "input"));
+            WebElement ivestiVarda = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[4]/input"));
             ivestiVarda.clear();
             ivestiVarda.sendKeys("Varlius");
             Thread.sleep(1000);
