@@ -35,8 +35,8 @@ public class ZuzaTest extends ZuzaDraiveriai {
 
 //    @BeforeClass
 //    public static void setUpFirefox() {
-//        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/geckodriver");
-//        System.setProperty("Webdriver.gecko.driver", "C:/Users/XPS 15/Downloads/geckodriver-v0.33.0-win32/geckodriver");
+////        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/geckodriver");
+//        System.setProperty("Webdriver.gecko.driver", "C:/Users/XPS 15/Downloads/geckodriver-v0.33.0-win32/geckodriver.exe");
 //        FirefoxOptions options = new FirefoxOptions();
 //        options.addArguments("--disable-notifications");
 //        ZuzaDraiveriai.driver = new FirefoxDriver(options);
@@ -94,7 +94,7 @@ public class ZuzaTest extends ZuzaDraiveriai {
     @Test
     public void I_prekesGrazinimas() throws InterruptedException {
         ZuzaPrekesGrazinimas.prekesGrazinimas();
-//        ZuzaPrekesGrazinimas.puslapioPaveikslelis();
+        ZuzaPrekesGrazinimas.puslapioPaveikslelis();
     }
 
     @Test
@@ -108,7 +108,7 @@ public class ZuzaTest extends ZuzaDraiveriai {
     }
     @Test
     public void L_naikinamaPaskyra() {
-        ZuzaRegistracija.paskyrosNaikinimas("Grazuma8597");
+        ZuzaRegistracija.paskyrosNaikinimas("Murmaliai853");
     }
 
 //    @AfterClass
