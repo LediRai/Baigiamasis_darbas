@@ -66,7 +66,8 @@ public class ZuzaTest extends ZuzaDraiveriai {
 
     @Test
     public void E_redagavimasProfilio() throws InterruptedException {
-        // ZuzaPrisijungimas.prisijungimas("Nakciausias50987@gmail.com", "Murmaliai853");
+//        ZuzaPrisijungimas.prisijungimas("zuziukai@gmail.com", "zuzuNda59");
+
         ZuzaProfilioRedagavimas.profilioRedagavimas();
         ZuzaProfilioRedagavimas.slaptazodzioKeitimas("Grazuma8597", "Murmaliai853");
     }
