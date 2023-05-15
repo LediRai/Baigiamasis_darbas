@@ -53,14 +53,14 @@ public class ZuzaPrisijungimas extends Zuza.ZuzaDraiveriai {
             mygtukas.click();
 
             List<WebElement> errorCode = driver.findElements(By.className("error-custom"));
-            if(errorCode.size() > 0) {
+            if (errorCode.size() > 0) {
                 File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                 Path destinationPath = Path.of("screenshottest.png");
                 try {
                     Files.copy(screenshotFile.toPath(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
-                    System.out.println("Screenshot saved to: " + destinationPath.toAbsolutePath());
+                    System.out.println("Klaidos nuotrauka issaugota: " + destinationPath.toAbsolutePath());
                 } catch (IOException e) {
-                    System.out.println("Failed to save screenshot: " + e.getMessage());
+                    System.out.println("Nepavyko issaugoti nuotraukos: " + e.getMessage());
                 }
             }
             Thread.sleep(2000);

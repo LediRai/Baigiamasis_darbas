@@ -16,9 +16,11 @@ public class ZuzaMegstamiausiuSarasas extends ZuzaDraiveriai {
     static String[] sarasas = {"gitara", "sijonas", "batai"};
     private final static By paieska = By.cssSelector(".search__input");
 
-    private final static By MegstamiausiuProduktuLokacija = By.xpath("/html/body/div[1]/div[2]/div/div/div[4]/div[1]/a[2]");
+    private final static By MegstamiausiuProduktuLokacija = By.xpath("//a[@class='header-content__item header-content__item--4 tactic js--favorite-link']");
+    //"/html/body/div[1]/div[2]/div/div/div[4]/div[1]/a[2]");
     ;
 
+    //a[@class='header-content__item header-content__item--4 tactic js--favorite-link']
     public ZuzaMegstamiausiuSarasas(WebDriver driver) {
         super(driver);
     }
@@ -64,13 +66,12 @@ public class ZuzaMegstamiausiuSarasas extends ZuzaDraiveriai {
     public static void MegstamiausiuSarasoNaikinimas() {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement searchBox2 = driver.findElement(paieska);
-        searchBox2.sendKeys("knyga"); //svetaines "apgavimas", nes kitaip nesimato "megstamiausi"
-        searchBox2.submit();
+//        WebElement searchBox2 = driver.findElement(paieska);
+//        searchBox2.sendKeys("knyga"); //svetaines "apgavimas", nes kitaip nesimato "megstamiausi"
+//        searchBox2.submit();
 
         try {
-            WebElement pasiektiLokacija = driver.findElement(MegstamiausiuProduktuLokacija);
-            wait.until(ExpectedConditions.elementToBeClickable(pasiektiLokacija));
+            WebElement pasiektiLokacija = wait.until(ExpectedConditions.elementToBeClickable(MegstamiausiuProduktuLokacija));
             pasiektiLokacija.click();
 
             List<WebElement> trintiPirkinius = driver.findElements(By.className("product-item__icon"));
@@ -82,10 +83,6 @@ public class ZuzaMegstamiausiuSarasas extends ZuzaDraiveriai {
         } catch (Exception e) {
             System.out.println("Megstamiausiu ikona nera matoma");
         }
-
-
-
-
 
     }
 }

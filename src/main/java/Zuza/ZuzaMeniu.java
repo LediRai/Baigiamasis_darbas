@@ -15,7 +15,7 @@ public class ZuzaMeniu extends ZuzaDraiveriai {
         super(driver);
     }
 
-   static JavascriptExecutor jse = (JavascriptExecutor) driver;
+    static JavascriptExecutor jse = (JavascriptExecutor) driver;
 
     public static void testuoju() {
 
@@ -35,8 +35,7 @@ public class ZuzaMeniu extends ZuzaDraiveriai {
         apacia.add(new tikrinamasLinkas("Atsiliepimai", "https://zuza.lt/pages/atsiliepimai/"));
 
 
-
-        try{
+        try {
             for (tikrinamasLinkas tikrinimas : virsus) {
                 verifyNavigationLink(driver, tikrinimas.getLinkLabel(), tikrinimas.getLinkUrl());
             }
@@ -46,13 +45,10 @@ public class ZuzaMeniu extends ZuzaDraiveriai {
             for (tikrinamasLinkas tikrinimas : apacia) {
                 verifyNavigationLink(driver, tikrinimas.getLinkLabel(), tikrinimas.getLinkUrl());
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("neveikia");
         }
-
-
     }
-
 
     // apsirasomos klases
     static class tikrinamasLinkas {

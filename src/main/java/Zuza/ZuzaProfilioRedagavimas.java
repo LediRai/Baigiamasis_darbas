@@ -88,38 +88,26 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
         }
     }
 
-        public static void slaptazodzioKeitimas (String esamasSlaptazodis, String naujasSlaptazodis) throws
-        InterruptedException {
+    public static void slaptazodzioKeitimas(String esamasSlaptazodis, String naujasSlaptazodis) throws
+            InterruptedException {
 
-            try {
+        try {
 
-                WebElement dabartinioSlaptazodzioIvedimas = driver.findElement(By.xpath("//*[@id=\"password-update\"]/div[1]/input"));
-                dabartinioSlaptazodzioIvedimas.sendKeys(esamasSlaptazodis);
+            WebElement dabartinioSlaptazodzioIvedimas = driver.findElement(By.xpath("//*[@id=\"password-update\"]/div[1]/input"));
+            dabartinioSlaptazodzioIvedimas.sendKeys(esamasSlaptazodis);
 
-                WebElement naujoSlaptazodzioIvedimas = driver.findElement(By.xpath("//*[@id=\"password-update\"]/div[2]/input"));
-                naujoSlaptazodzioIvedimas.sendKeys(naujasSlaptazodis);
+            WebElement naujoSlaptazodzioIvedimas = driver.findElement(By.xpath("//*[@id=\"password-update\"]/div[2]/input"));
+            naujoSlaptazodzioIvedimas.sendKeys(naujasSlaptazodis);
 
-                WebElement naujoSlaptazodzioIvedimas2 = driver.findElement(By.xpath("//*[@id=\"password-update\"]/div[3]/input"));
-                naujoSlaptazodzioIvedimas2.sendKeys(naujasSlaptazodis);
+            WebElement naujoSlaptazodzioIvedimas2 = driver.findElement(By.xpath("//*[@id=\"password-update\"]/div[3]/input"));
+            naujoSlaptazodzioIvedimas2.sendKeys(naujasSlaptazodis);
 
+            WebElement slaptazodzioPakeitimoIssaugojimas = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/div/div[3]/form/button"));
+            Thread.sleep(2000);
+            slaptazodzioPakeitimoIssaugojimas.click();
 
-                WebElement slaptazodzioPakeitimoIssaugojimas = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/div/div[3]/form/button"));
-                Thread.sleep(2000);
-                slaptazodzioPakeitimoIssaugojimas.click();
-
-
-            } catch (Exception r) {
-                System.out.println("Slaptazodzio keitimas nesekmingas: " + r.getMessage());
-            }
-
+        } catch (Exception r) {
+            System.out.println("Slaptazodzio keitimas nesekmingas: " + r.getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
+}

@@ -4,18 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.time.Duration;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class PirkiniuKrepselis extends ZuzaDraiveriai {
 
@@ -34,20 +28,21 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
 
 
     public static void zuzaPirkiniai() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         JavascriptExecutor jse = (JavascriptExecutor) driver;
 
-        String[] paieska = {"ledinis sviestuvas ", "A27368416674", "A22595987182", "patalyne", "A27363951782"};
+        String[] paieska = {"ledinis sviestuvas", "molinis puodas", "badmintono rakete", "patalyne", "nuotrauku remelis"};
+        //"A27368416674", "A22595987182","A27363951782"
 
         // prekiu paieskos ciklas per masyvo elementus
         for (String i : paieska) {
-
             driver.get("https://zuza.lt/");
             WebElement ieskoti = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/form/input"));
             wait.until(ExpectedConditions.elementToBeClickable(ieskoti));
             ieskoti.clear();
             ieskoti.sendKeys(i);
             ieskoti.submit();
+
             try {
                 Thread.sleep(3000);
                 List<WebElement> pirkti = driver.findElements(By.className("card__wrapper"));
@@ -89,16 +84,16 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
 
         // atspausdinama informacija esanti prekiu krepselio liste
         List<WebElement> krepselioSarasas = driver.findElements(By.xpath("//div[@class='basket__product-box']//form"));
-        System.out.println(krepselioSarasas.size());    //ziuriu kikek elementu yra bloke
+        System.out.println(krepselioSarasas.size());
 
         for (int i = 0; i < krepselioSarasas.size(); i++) {
             System.out.println("***********");
 
             String prekesPavadinimas = krepselioSarasas.get(i).findElement(produktoPavadinimas).getText();
             System.out.println(prekesPavadinimas);
+
             String prekesKaina = krepselioSarasas.get(i).findElement(kaina).getText();
             System.out.println(prekesKaina);
-//            int priceValue = Integer.parseInt(prekesKaina.replaceAll("\\D+", ""));
 
             String idSkelbimo = krepselioSarasas.get(i).findElement(skelbimoID).getText();
             System.out.println(idSkelbimo);
@@ -112,27 +107,25 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
             System.out.println(styleAttribute);
         }
 
-
-        // koreguojamas prekiu kiekis !!! tik viena preke pripliusuoja
-        List<WebElement> elements = driver.findElements(By.xpath("//div[@class='basket__product-box']//form"));
+        // koreguojamas prekiu kiekis
+        List<WebElement> produktuSarasas = driver.findElements(By.xpath("//div[@class='basket__product-box']//form"));
         try {
-            for (int i = 0; i < elements.size(); i++) {
+            for (int i = 0; i < produktuSarasas.size(); i++) {
                 if (i == 0 || i == 2) {
-                    WebElement addButton = elements.get(i).findElement(By.cssSelector("body > main > div.basket__container.container > div.basket__product-box > form > div.basket-item__count > div.counter.basket-item__counter > button.counter__mark.active.js--plus"));
+                    WebElement pliusoMygtukas = produktuSarasas.get(i).findElement(By.cssSelector("body > main > div.basket__container.container > div.basket__product-box > form > div.basket-item__count > div.counter.basket-item__counter > button.counter__mark.active.js--plus"));
+                    pliusoMygtukas.click();
                     Thread.sleep(2000);
-                    addButton.click();
-                    Thread.sleep(200);
                 }
             }
         } catch (Exception n) {
-            System.out.println("neveikia");
+            System.out.println("Neveikia prekiu kiekio redagavimas");
         }
 
         // spaudziamas naikinimo mygtukas
-        List<WebElement> productList = driver.findElements(By.cssSelector("div.basket__product-box form"));
+        List<WebElement> produktuSarasas2 = driver.findElements(By.cssSelector("div.basket__product-box form"));
         try {
             // spaudziamas nainikimo mygtukas
-            for (WebElement product : productList) {
+            for (WebElement product : produktuSarasas2) {
                 WebElement addButton = product.findElement(By.cssSelector("body > main > div.basket__container.container > div.basket__product-box > form:nth-child(1) > button > svg > use"));
                 addButton.click();
                 Thread.sleep(2000);
@@ -171,7 +164,7 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
                 pstmt.executeUpdate();
             }
 
-            System.out.println("Data inserted successfully.");
+            System.out.println("Lentele sekmingai uzpildyta.");
 
         } catch (SQLException e) {
             e.printStackTrace();
