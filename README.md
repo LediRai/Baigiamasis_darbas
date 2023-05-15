@@ -83,7 +83,7 @@ Command prompt arba kitokį terminalą būti projekto viduje ir paleisti šitą 
 
 **Jūsų indėlis**
 
-Jei turite kokių pastebėjimų, pasiūlymų bei idėjų projektą patobulinti, susisiekite su mumis palikdami komentarą šioje saugykloje.
+Jei turite kokių pastebėjimų, pasiūlymų bei idėjų projektą patobulinti, susisiekite su mumis el paštu: zuzatestai@baigiamasisdarbas.lt.
 
 
 
