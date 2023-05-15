@@ -62,6 +62,7 @@ https://github.com/LediRai/Baigiamasis_darbas
 2. Pasiekite projekto direktoriją:
 
 ![CD_1](CD_1.png)
+
 3. Įdiekite projekto integracinius elementus naudodami „Maven“ įrankį:
 
 ![mvn_1](mvn_1.png)
