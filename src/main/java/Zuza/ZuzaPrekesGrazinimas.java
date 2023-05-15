@@ -2,7 +2,9 @@ package Zuza;
 
 import jdk.javadoc.internal.doclets.toolkit.util.DocFile;
 import org.openqa.selenium.*;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,7 +12,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -18,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
+import org.openqa.selenium.JavascriptExecutor;
 
 public class ZuzaPrekesGrazinimas extends ZuzaDraiveriai {
 
@@ -161,10 +166,10 @@ public class ZuzaPrekesGrazinimas extends ZuzaDraiveriai {
     }
 
 
-//    public static void puslapioPaveikslelis() throws InterruptedException {
+    public static void puslapioPaveikslelis() throws InterruptedException {
 
 //        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-//
+
 //        try {
 //            WebElement tiksliVieta = driver.findElement(By.xpath("//*[@id=\"return-and-warranty-form\"]/h3[2]"));
 //            jse.executeScript("arguments[0].scrollIntoView();", tiksliVieta);
@@ -189,6 +194,38 @@ public class ZuzaPrekesGrazinimas extends ZuzaDraiveriai {
 //            e.printStackTrace();
 //        }
 
-//    }
+
+
+        jse.executeScript("window.scrollTo(0, 200)");
+        Thread.sleep(3000);
+        WebElement vieta = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/form/div[5]"));
+        jse.executeScript("arguments[0].scrollIntoView();", vieta);
+        Thread.sleep(3000);
+
+
+        try {
+            TakesScreenshot screenshot = (TakesScreenshot) driver;
+            File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
+            BufferedImage screenshotImage = ImageIO.read(screenshotFile);
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+            String timestamp = dateFormat.format(new Date());
+            String directoryPath = "C://Users//XPS 15//Documents//GitHub//Baigiamasis_darbas//";
+            String fileName = directoryPath + "screenshot_" + timestamp + ".png";
+
+            try (OutputStream out = new FileOutputStream(fileName)) {
+                ImageIO.write(screenshotImage, "png", out);
+                System.out.println("Screenshot saved: " + fileName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (WebDriverException e) {
+            e.printStackTrace();
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
+}
