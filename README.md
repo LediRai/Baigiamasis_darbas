@@ -6,14 +6,14 @@ internetinio tinklalapio „Zuza.lt“ automatinis testavimas**
 
 **Turinys**
 
-Projekto apžvalga
-Funkcionalumai
-Techniniai reikalavimai
-Įdiegimas
-Konfigūracija
-Testų paleidimas
-Jūsų indėlis
-Licencija
+- Projekto apžvalga
+- Funkcionalumai
+- Techniniai reikalavimai
+- Įdiegimas
+- Konfigūracija
+- Testų paleidimas
+- Jūsų indėlis
+
 
 **Projekto apžvalga**
 
