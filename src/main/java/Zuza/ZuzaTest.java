@@ -70,6 +70,7 @@ public class ZuzaTest extends ZuzaDraiveriai {
 
         ZuzaProfilioRedagavimas.profilioRedagavimas();
         ZuzaProfilioRedagavimas.slaptazodzioKeitimas("Grazuma8597", "Murmaliai853");
+//       ZuzaProfilioRedagavimas.slaptazodzioKeitimas("zuzuNda59", "TESTTEST");
     }
 
     @Test
