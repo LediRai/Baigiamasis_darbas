@@ -41,7 +41,7 @@ Taip pat sėkmingai surastos prekės bei mėgstamiausių prekių sąrašas turi 
 **Techniniai reikalavimai**
 
 Testų paleidimas užtikrinamas šiame projekte naudojant ir įdiegiant naujausios versijos:
-1. „Java“ programinę kalbą,
+1. „Java“ programinę kalbą (versija: "1.8.0_371"),
 2. „Maven“ įrankį,
 3. „Selenium“ biblioteką,
 4. „JUnit“ sistemą,
