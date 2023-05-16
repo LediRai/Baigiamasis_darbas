@@ -42,13 +42,13 @@ Selenium bibliotekos WebDriver įrankis pasitelktas automatizuoti „Chrome“ i
 2. sėkmingas/ nesėkmingas prisijungimas,
 3. sukurto profilio redagavimas bei slaptažodžio keitimas,
 4. pristatymo adreso suvedimas,
-5. sukurtos paskyros naikinimas,
-6. prekių paieška,
+5. prekių paieška,
+6. mėgstamiausių prekių sąrašo sudarymas ir panaikinimas,
 7. pirkinių krepšelio papildymas bei ištrynimas,
-8. mėgstamiausių prekių sąrašo sudarymas ir panaikinimas,
-9. prekės grąžinimas,
-10. užklausa dėl nepateikto užsakymo,
-11. Meniu skiltis
+8. prekės grąžinimas,
+9. užklausa dėl nepateikto užsakymo,
+10. Meniu skiltis,
+11. sukurtos paskyros naikinimas.
 
 Taip pat sėkmingai surastos prekės bei mėgstamiausių prekių sąrašas turi pasiekti sukurtą duomenų bazę, naudojant „PostgreSQL“.
 
@@ -101,6 +101,7 @@ Kai naršyklių „paleidėjai“ (drivers) įdiegti jūsų kompiuterių operaci
 
 Command prompt arba kitokį terminalą būti projekto viduje ir paleisti šitą komandą: jar cfm YourJarName.jar manifest.txt com example/*.class ir pasileis jar
 
+IntelliJ IDEA
 
 **Jūsų indėlis**
 
