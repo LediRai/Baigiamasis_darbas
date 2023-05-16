@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.time.Duration;
@@ -26,33 +27,36 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
     private final static By kaina = By.className("basket-item__price");
     private final static By paveiksliukas = By.className("basket-item__img");
 
+    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    static JavascriptExecutor jse = (JavascriptExecutor) driver;
 
-    public static void zuzaPirkiniai() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
+    public static void zuzaPirkiniai() throws SQLException {
 
-        String[] paieska = {"ledinis sviestuvas", "molinis puodas", "badmintono rakete", "patalyne", "nuotrauku remelis"};
+
+        String[] paieska = {"ledinis sviestuvas", "molinis puodas","badmintono rakete", "patalyne","nuotrauku remelis"};
         //"A27368416674", "A22595987182","A27363951782"
 
         // prekiu paieskos ciklas per masyvo elementus
         for (String i : paieska) {
             driver.get("https://zuza.lt/");
-            WebElement ieskoti = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/form/input"));
+            WebElement ieskoti = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/" +
+                    "div[2]/form/input"));
             wait.until(ExpectedConditions.elementToBeClickable(ieskoti));
             ieskoti.clear();
             ieskoti.sendKeys(i);
             ieskoti.submit();
 
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
                 List<WebElement> pirkti = driver.findElements(By.className("card__wrapper"));
                 jse.executeScript("arguments[0].scrollIntoView();", pirkti.get(0));
-                Thread.sleep(2000);
+                Thread.sleep(1000);
                 wait.until(ExpectedConditions.elementToBeClickable(pirkti.get(0)));
                 pirkti.get(0).click();
                 Thread.sleep(1000);
 
-                WebElement pridetiIKrepseli = driver.findElement(By.xpath("(//button[contains(text(),'PRIDĖTI Į KREPŠELĮ')])[1]"));
+                WebElement pridetiIKrepseli = driver.findElement(By.xpath("(//button[contains(text()," +
+                        "'PRIDĖTI Į KREPŠELĮ')])[1]"));
                 // Naudoju JSexecutor kad pascrolintu langa iki elemento
                 jse.executeScript("arguments[0].scrollIntoView();", pridetiIKrepseli);
                 Thread.sleep(1000);
@@ -60,10 +64,11 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
                 pridetiIKrepseli.click();
                 Thread.sleep(3000);
 
-                WebElement testiApsipirkima = driver.findElement(By.xpath("//a[contains(text(),'tęsti apsipirkimą')]"));
+                WebElement testiApsipirkima = driver.findElement(By.xpath("//a[contains(text(),'tęsti" +
+                        " apsipirkimą')]"));
                 wait.until(ExpectedConditions.elementToBeClickable(testiApsipirkima));
                 testiApsipirkima.click();
-                Thread.sleep(2000);
+                Thread.sleep(1000);
 
             } catch (Exception e) {
                 System.out.println("Testas nepavyksta: " + e.getMessage());
@@ -71,13 +76,14 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
         }
         try {
             // tikrinama kas yra sudeta i pirkiniu krepseli
-            WebElement prekiuSarasas = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[4]/div[1]/a[3]"));
+            WebElement prekiuSarasas = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/" +
+                    "div[4]/div[1]/a[3]"));
             // paslenkamas puslapis i virsu kad butu matomas elementas ir ji paspaudziam
             jse.executeScript("arguments[0].scrollIntoView();", prekiuSarasas);
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             wait.until(ExpectedConditions.elementToBeClickable(prekiuSarasas));
             prekiuSarasas.click();
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (Exception n) {
             System.out.println("neveikia");
         }
@@ -86,25 +92,33 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
         List<WebElement> krepselioSarasas = driver.findElements(By.xpath("//div[@class='basket__product-box']//form"));
         System.out.println(krepselioSarasas.size());
 
-        for (int i = 0; i < krepselioSarasas.size(); i++) {
-            System.out.println("***********");
+        String sql = "INSERT INTO pirkiniuKrepselis(produkto_pavadinimas, skelbimo_ID, kaina, prekiu_likutis_sandelyje," +
+                " paveiksliukas) VALUES(?, ?, ?, ?, ?)";
+        PreparedStatement pstmt = DbConnection.prisijungimasPrieDB(sql);
+        DbConnection.testasDB();
 
-            String prekesPavadinimas = krepselioSarasas.get(i).findElement(produktoPavadinimas).getText();
-            System.out.println(prekesPavadinimas);
+        try {
+            for (WebElement preke : krepselioSarasas) {
 
-            String prekesKaina = krepselioSarasas.get(i).findElement(kaina).getText();
-            System.out.println(prekesKaina);
+                String prekesPavadinimas = preke.findElement(produktoPavadinimas).getText();
+                String prekesKaina = preke.findElement(kaina).getText();
+                String idSkelbimo = preke.findElement(skelbimoID).getText();
+                String prekiuLikutis = preke.findElement(likutis).getText();
+                int kiekisVnt = Integer.parseInt(prekesKaina.replaceAll("\\D+", ""));
+                WebElement paveiksliukoVieta = preke.findElement(paveiksliukas);
+                String styleAttribute = paveiksliukoVieta.getAttribute("src");
 
-            String idSkelbimo = krepselioSarasas.get(i).findElement(skelbimoID).getText();
-            System.out.println(idSkelbimo);
+                pstmt.setString(1, prekesPavadinimas);
+                pstmt.setString(2, idSkelbimo);
+                pstmt.setString(3, prekesKaina);
+                pstmt.setString(4, prekiuLikutis);
+                pstmt.setString(5, styleAttribute);
 
-            String prekiuLikutis = krepselioSarasas.get(i).findElement(likutis).getText();
-            int kiekisVnt = Integer.parseInt(prekesKaina.replaceAll("\\D+", ""));
-            System.out.println(prekiuLikutis);
+                pstmt.executeUpdate();
 
-            WebElement paveiksliukoVieta = krepselioSarasas.get(i).findElement(paveiksliukas);
-            String styleAttribute = paveiksliukoVieta.getAttribute("src");
-            System.out.println(styleAttribute);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         // koreguojamas prekiu kiekis
@@ -134,40 +148,5 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
             System.out.println("Pirkiniu krepselis neatsidaro" + e.getMessage());
         }
     }
-
-    public void pildomaLentele() {
-        try {
-            String sql = "INSERT INTO products(produkto_pavadinimas, skelbimo_ID, kaina, prekiu_likutis_sandelyje," +
-                    " paveiksliukas) VALUES(?, ?, ?, ?, ?)";
-            PreparedStatement pstmt = DbConnection.prisijungimasPrieDB(sql);
-            DbConnection.testasDB();
-            List<WebElement> krepselioSarasas = driver.findElements(By.xpath("//div[@class='basket__product-box']//form"));
-
-            for (int i = 0; i < krepselioSarasas.size(); i++) {
-                String prekesPavadinimas = krepselioSarasas.get(i).findElement(produktoPavadinimas).getText();
-                String prekesKaina = krepselioSarasas.get(i).findElement(kaina).getText();
-                String idSkelbimo = krepselioSarasas.get(i).findElement(skelbimoID).getText();
-                String prekiuLikutis = krepselioSarasas.get(i).findElement(likutis).getText();
-                String paveiksliukoVieta = krepselioSarasas.get(i).findElement(paveiksliukas).getAttribute("src");
-
-                // Create an SQL insert statement
-                String insertQuery = "INSERT INTO produktuKrepselis (produkto_pavadinimas, kaina, Skelbimo_ID, prekiu_likutis_sandelyje, paveiksliuko_vieta) " +
-                        "VALUES (?, ?, ?, ?, ?)";
-
-                assert pstmt != null;
-                pstmt.setString(1, prekesPavadinimas);
-                pstmt.setString(2, prekesKaina);
-                pstmt.setString(3, idSkelbimo);
-                pstmt.setString(4, prekiuLikutis);
-                pstmt.setString(5, paveiksliukoVieta);
-
-                pstmt.executeUpdate();
-            }
-
-            System.out.println("Lentele sekmingai uzpildyta.");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
+

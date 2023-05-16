@@ -19,12 +19,12 @@ public class DbConnection extends ZuzaDraiveriai {
             System.out.println("1");
             Connection connection = DriverManager.getConnection(url, user, password);
             Statement stmt = connection.createStatement();
-            String pirkiniuKrepselis = "CREATE TABLE produktuKrepselis " +
+            String pirkiniuKrepselis = "CREATE TABLE pirkiniuKrepselis " +
                     "(id SERIAL PRIMARY KEY," +
                     "produkto_pavadinimas VARCHAR(250)," +
-                    "Skelbimo_ID INT,"+
-                    "kaina INT," +
-                    "prekiu_likutis_sandelyje INT,"+
+                    "Skelbimo_ID VARCHAR(250),"+
+                    "kaina VARCHAR(250)," +
+                    "prekiu_likutis_sandelyje VARCHAR(250),"+
                     "paveiksliukas VARCHAR(250))";
 //
 //            String megstamiausiuSarasas = "CREATE TABLE megstamisusiuSarasas " +
@@ -72,18 +72,5 @@ public class DbConnection extends ZuzaDraiveriai {
             System.err.println("Error connecting to database: " + e.getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 

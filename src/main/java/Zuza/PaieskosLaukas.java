@@ -22,7 +22,8 @@ public class PaieskosLaukas extends ZuzaDraiveriai {
         for (String i : paieska) {
             try {
                 driver.get("https://zuza.lt/");
-                WebElement ieskoti = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/form/input"));
+                WebElement ieskoti = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/" +
+                        "div[3]/div[2]/form/input"));
                 wait.until(ExpectedConditions.elementToBeClickable(ieskoti));
                 ieskoti.clear();
                 ieskoti.sendKeys(i);

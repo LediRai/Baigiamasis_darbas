@@ -23,7 +23,8 @@ public class ZuzaPrisijungimas extends Zuza.ZuzaDraiveriai {
     private final static By elPastas = By.cssSelector("#form-login > div:nth-child(3) > input");
     private final static By slaptazodis = By.cssSelector("#form-login > div:nth-child(4) > input");
     private final static By prisijungimoMygtukas = By.cssSelector("#form-login > button");
-    private final static By atsijungti = By.cssSelector("body > main > div.user__container.container > div.user__main > div > form > button");
+    private final static By atsijungti = By.cssSelector("body > main > div.user__container.container > div.user__main" +
+            " > div > form > button");
 
 
     public static void prisijungimas(String prvardas, String prslaptazodis) {

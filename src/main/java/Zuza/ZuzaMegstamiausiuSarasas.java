@@ -1,12 +1,10 @@
 package Zuza;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-import java.time.Instant;
 import java.util.List;
 public class ZuzaMegstamiausiuSarasas extends ZuzaDraiveriai {
     static String[] sarasas = {"gitara", "sijonas", "batai"};
@@ -45,13 +43,14 @@ public class ZuzaMegstamiausiuSarasas extends ZuzaDraiveriai {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 //        WebElement pasiektiLokacija = wait.until(ExpectedConditions.visibilityOfElementLocated(MegstamiausiuProduktuLokacija));
 //        pasiektiLokacija.click();
+
 //        WebElement searchBox2 = driver.findElement(paieska);
 //        searchBox2.sendKeys("knyga"); //svetaines "apgavimas", nes kitaip nesimato "megstamiausi"
 //        searchBox2.submit();
         driver.navigate().to("https://zuza.lt/favorites/");
         try {
             List<WebElement> trintiPirkinius = driver.findElements(By.className("product-item__icon"));
-            System.out.println(trintiPirkinius.size());
+            Thread.sleep(3000);
             trintiPirkinius.get(0).click();
             Thread.sleep(3000);
             trintiPirkinius.get(1).click();
@@ -63,3 +62,10 @@ public class ZuzaMegstamiausiuSarasas extends ZuzaDraiveriai {
         }
     }
 }
+
+
+
+
+
+
+

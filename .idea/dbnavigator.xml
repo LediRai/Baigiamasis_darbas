@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e4a0972f-83c6-47b8-84b4-2e0bc78427a2">
-      <console name="Connection" type="STANDARD" schema="zuzaLentele" session="Main"><![CDATA[SELECT * from produktukrepselis
+      <console name="Connection" type="STANDARD" schema="zuzaLentele" session="Main"><![CDATA[SELECT * from pirkiniuKrepselis
 --delete from products]]></console>
     </connection>
   </component>
@@ -25,6 +25,7 @@
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="e4a0972f-83c6-47b8-84b4-2e0bc78427a2" dataset="public.produktukrepselis" active-filter-id="" />
+    <filter-actions connection-id="e4a0972f-83c6-47b8-84b4-2e0bc78427a2" dataset="public.pirkiniukrepselis" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -34,7 +35,7 @@
     <connections>
       <connection id="e4a0972f-83c6-47b8-84b4-2e0bc78427a2" active="true" signed="true">
         <database>
-          <name value="Connection" />
+          <name value="Zuza Pirkiniu Krepselis" />
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />

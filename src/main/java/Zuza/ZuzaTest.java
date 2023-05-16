@@ -5,14 +5,17 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.awt.*;
+import java.sql.SQLException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
 public class ZuzaTest extends ZuzaDraiveriai {
 
     public ZuzaTest() {
@@ -22,25 +25,25 @@ public class ZuzaTest extends ZuzaDraiveriai {
 
     @BeforeClass
     public static void setUpChrome() {
-//        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/chromedriver/chromedriver");
-        System.setProperty("webdriver.chrome.driver", "C:/Users/XPS 15/Downloads/chromedriver_win32 (1)/" +
-                "chromedriver.exe");
+
+        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/chromedriver/chromedriver");
+//        System.setProperty("webdriver.chrome.driver", "C:/Users/XPS 15/Downloads/chromedriver_win32 (1)/" +
+//                "chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         ZuzaDraiveriai.driver = new ChromeDriver(options);
         ZuzaDraiveriai.driver.manage().window().maximize();
-//        Db_Conection.prisijungimasPrieDB();
-//        Db_Conection.testasDB();
     }
 
 //    @BeforeClass
 //    public static void setUpFirefox() {
-////        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/geckodriver");
-//        System.setProperty("Webdriver.gecko.driver", "C:/Users/XPS 15/Downloads/geckodriver-v0.33.0-win32/geckodriver.exe");
+//        System.setProperty("Webdriver.gecko.driver", "/Users/Raimonda/Downloads/geckodriver");
+//        // System.setProperty("Webdriver.gecko.driver", "C:/Users/XPS 15/Downloads/geckodriver-v0.33.0-win32/geckodriver");
 //        FirefoxOptions options = new FirefoxOptions();
 //        options.addArguments("--disable-notifications");
 //        ZuzaDraiveriai.driver = new FirefoxDriver(options);
 //        ZuzaDraiveriai.driver.manage().window().maximize();
+//
 //    }
 
     @Test
@@ -67,13 +70,11 @@ public class ZuzaTest extends ZuzaDraiveriai {
     @Test
     public void E_redagavimasProfilio() throws InterruptedException {
 //        ZuzaPrisijungimas.prisijungimas("zuziukai@gmail.com", "zuzuNda59");
-
         ZuzaProfilioRedagavimas.profilioRedagavimas();
         ZuzaProfilioRedagavimas.slaptazodzioKeitimas("Grazuma8597", "Murmaliai853");
-//       ZuzaProfilioRedagavimas.slaptazodzioKeitimas("zuzuNda59", "TESTTEST");
     }
 
-    @Test
+        @Test
     public void F_paieska() {
         PaieskosLaukas.zuzaPaieska();
     }
@@ -84,10 +85,8 @@ public class ZuzaTest extends ZuzaDraiveriai {
         ZuzaMegstamiausiuSarasas.MegstamiausiuSarasoNaikinimas();
     }
 
-
-
     @Test
-    public void H_pirkiniai() {
+    public void H_pirkiniai() throws SQLException {
         PirkiniuKrepselis.zuzaPirkiniai();
     }
 
@@ -103,19 +102,24 @@ public class ZuzaTest extends ZuzaDraiveriai {
     }
 
     @Test
-    public void K_meniuTest(){
+    public void K_meniuTest() {
         ZuzaMeniu.testuoju();
     }
+
     @Test
     public void L_naikinamaPaskyra() {
         ZuzaRegistracija.paskyrosNaikinimas("Murmaliai853");
     }
 
+
 //    @AfterClass
 //    public static void tearDown() {
-//        driver.quit();
-//    }
+// chromeDriver.quit();
+//         firefoxDriver.quit();
+//         //    }
 }
 
+//    ar cfm YourJarName.jar manifest.txt com example/*.class  per terminala , esant projekto viduje kad susikurtu jar
+//  ???  manifest txt failo reikia
 
 

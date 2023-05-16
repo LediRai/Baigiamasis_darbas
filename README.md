@@ -1,4 +1,19 @@
 # Baigiamasis_darbas
+Raimondos ir Rasuolės automatinio testavimo kurso baigiamasis darbas:
+internetinio tinklalapio „Zuza.lt“ testavimas
+Šio projekto tikslas ištestuoti kuo daugiau pasirinkto internetinio tinklalapio
+funkcionalumų, laikantis tvarkingos projekto struktūros, sudarant sąlygas pastebėti
+klaidas bei pasirinktą informaciją išsaugoti duomenų bazėje.
+Turinys
+Projekto apžvalga
+Funkcionalumai
+Techniniai reikalavimai
+Įdiegimas
+Konfigūracija
+Testų paleidimas
+Jūsų indėlis
+Licencija
+
 
 **Raimondos ir Rasuolės automatinio testavimo kurso baigiamasis darbas:internetinio tinklalapio „Zuza.lt“ automatinis testavimas**
 
