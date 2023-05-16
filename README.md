@@ -72,15 +72,21 @@ Testų paleidimas užtikrinamas šiame projekte naudojant ir įdiegiant naujausi
 https://github.com/LediRai/Baigiamasis_darbas
 
 
-![clone_1](clone_1.png)
+```
+git clone https://github.com/LediRai/Baigiamasis_darbas.git
+```
 
 2. Pasiekite projekto direktoriją:
 
-![CD_1](CD_1.png)
+```
+cd Baigiamasis_darbas
+```
 
 3. Įdiekite projekto integracinius elementus naudodami „Maven“ įrankį:
 
-![mvn_1](mvn_1.png)
+```
+mvn install
+```
 
 
 **Konfigūracija**
