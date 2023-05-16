@@ -52,14 +52,14 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             WebElement ivestiVarda = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div" +
                     "[4]/input"));
             ivestiVarda.clear();
-            ivestiVarda.sendKeys("Varlius");
+            ivestiVarda.sendKeys("Zuzius");
             Thread.sleep(1000);
 
             //pavardes ivedimas
             WebElement ivestiPavarde = wait.until(ExpectedConditions.visibilityOfElementLocated(By.
                     xpath("//*[@id=\"profile-update\"]/div[5]/input")));
             ivestiPavarde.clear();
-            ivestiPavarde.sendKeys("Varliukas");
+            ivestiPavarde.sendKeys("Zuzauskas");
             Thread.sleep(1000);
             ivestiPavarde.submit();
 
