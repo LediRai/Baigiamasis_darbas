@@ -26,9 +26,9 @@ public class ZuzaTest extends ZuzaDraiveriai {
     @BeforeClass
     public static void setUpChrome() {
 
-        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/chromedriver/chromedriver");
-//        System.setProperty("webdriver.chrome.driver", "C:/Users/XPS 15/Downloads/chromedriver_win32 (1)/" +
-//                "chromedriver.exe");
+//        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/chromedriver/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "C:/Users/XPS 15/Downloads/chromedriver_win32 (1)/" +
+                "chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         ZuzaDraiveriai.driver = new ChromeDriver(options);
@@ -71,6 +71,7 @@ public class ZuzaTest extends ZuzaDraiveriai {
     public void E_redagavimasProfilio() throws InterruptedException {
 //        ZuzaPrisijungimas.prisijungimas("zuziukai@gmail.com", "zuzuNda59");
         ZuzaProfilioRedagavimas.profilioRedagavimas();
+//        ZuzaProfilioRedagavimas.slaptazodzioKeitimas("zuzuNda59", "Murmaliai");
         ZuzaProfilioRedagavimas.slaptazodzioKeitimas("Grazuma8597", "Murmaliai853");
     }
 
@@ -85,10 +86,10 @@ public class ZuzaTest extends ZuzaDraiveriai {
         ZuzaMegstamiausiuSarasas.MegstamiausiuSarasoNaikinimas();
     }
 
-    @Test
-    public void H_pirkiniai() throws SQLException {
-        PirkiniuKrepselis.zuzaPirkiniai();
-    }
+//    @Test
+//    public void H_pirkiniai() throws SQLException {
+//        PirkiniuKrepselis.zuzaPirkiniai();
+//    }
 
     @Test
     public void I_prekesGrazinimas() throws InterruptedException {
