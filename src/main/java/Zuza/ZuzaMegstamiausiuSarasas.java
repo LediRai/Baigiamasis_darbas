@@ -6,21 +6,24 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
+
 public class ZuzaMegstamiausiuSarasas extends ZuzaDraiveriai {
     static String[] sarasas = {"gitara", "sijonas", "batai"};
     private final static By paieska = By.cssSelector(".search__input");
-    private final static By MegstamiausiuProduktuLokacija = By.xpath("//a[@class='header-content__item header-content__item--4 tactic js--favorite-link']");
+
+
     public ZuzaMegstamiausiuSarasas(WebDriver driver) {
         super(driver);
     }
     public static void MegstamiausiuSarasas() throws InterruptedException {
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         for (String i : sarasas) {
             WebElement searchBox = driver.findElement(paieska);
             searchBox.sendKeys(i);
             searchBox.submit();
-            //live chat
-//            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body")));
+
             try {
                 Thread.sleep(3000);
                 WebElement pridetiMegstamiausiaPreke = driver.findElement(By.cssSelector(".card__overlay"));
@@ -34,20 +37,19 @@ public class ZuzaMegstamiausiuSarasas extends ZuzaDraiveriai {
             } catch (Exception e) {
                 System.out.println("Negalima prideti prekes prie megstamiausiu: " + e.getMessage());
             }
+
             driver.navigate().back();
             driver.navigate().back();
             Thread.sleep(3000);
         }
     }
+
+
     public static void MegstamiausiuSarasoNaikinimas() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//        WebElement pasiektiLokacija = wait.until(ExpectedConditions.visibilityOfElementLocated(MegstamiausiuProduktuLokacija));
-//        pasiektiLokacija.click();
 
-//        WebElement searchBox2 = driver.findElement(paieska);
-//        searchBox2.sendKeys("knyga"); //svetaines "apgavimas", nes kitaip nesimato "megstamiausi"
-//        searchBox2.submit();
         driver.navigate().to("https://zuza.lt/favorites/");
+
         try {
             List<WebElement> trintiPirkinius = driver.findElements(By.className("product-item__icon"));
             Thread.sleep(3000);
