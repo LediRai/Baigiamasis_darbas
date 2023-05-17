@@ -87,7 +87,8 @@ public class ZuzaNepateiktasUzsakymas extends ZuzaDraiveriai {
 
             // failo suradimas kompiuteryje pateikiant direktoriją ir jo pridėjimas
 
-            String filePath = "\"C:\\Users\\XPS 15\\Documents\\GitHub\\Baigiamasis_darbas\\PAVYZDYS.png\"";
+//            String filePath = "\"C:\\Users\\XPS 15\\Documents\\GitHub\\Baigiamasis_darbas\\PAVYZDYS.png\"";
+            String filePath = "/Users/Raimonda/Downloads/PAVYZDYS.png";
             Transferable transferable = new StringSelection(filePath);
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(transferable, null);

@@ -29,6 +29,7 @@ public class PaieskosLaukas extends ZuzaDraiveriai {
                 ieskoti.sendKeys(i);
                 ieskoti.submit();
 
+                //del reklamos nesimato prekiu, del to reikia paslinkti puslapi iki prekiu saraso
                 WebElement iskomosPrekesMatomumas = driver.findElement(By.className("card-box__heading"));
                 jsExecutor.executeScript("arguments[0].scrollIntoView(true);", iskomosPrekesMatomumas);
                 Thread.sleep(1000);

@@ -32,7 +32,6 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
 
     public static void zuzaPirkiniai() throws SQLException {
 
-
         String[] paieska = {"ledinis sviestuvas", "molinis puodas","badmintono rakete", "patalyne","nuotrauku remelis"};
         //"A27368416674", "A22595987182","A27363951782"
 
@@ -59,10 +58,10 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
                         "'PRIDĖTI Į KREPŠELĮ')])[1]"));
                 // Naudoju JSexecutor kad pascrolintu langa iki elemento
                 jse.executeScript("arguments[0].scrollIntoView();", pridetiIKrepseli);
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 wait.until(ExpectedConditions.elementToBeClickable(pridetiIKrepseli));
                 pridetiIKrepseli.click();
-                Thread.sleep(3000);
+                Thread.sleep(1000);
 
                 WebElement testiApsipirkima = driver.findElement(By.xpath("//a[contains(text(),'tęsti" +
                         " apsipirkimą')]"));
@@ -74,8 +73,9 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
                 System.out.println("Testas nepavyksta: " + e.getMessage());
             }
         }
+
+        // tikrinama kas yra sudeta i pirkiniu krepseli
         try {
-            // tikrinama kas yra sudeta i pirkiniu krepseli
             WebElement prekiuSarasas = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/" +
                     "div[4]/div[1]/a[3]"));
             // paslenkamas puslapis i virsu kad butu matomas elementas ir ji paspaudziam
@@ -89,11 +89,12 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
         }
 
         // atspausdinama informacija esanti prekiu krepselio liste
-        List<WebElement> krepselioSarasas = driver.findElements(By.xpath("//div[@class='basket__product-box']//form"));
+        List<WebElement> krepselioSarasas = driver.findElements(By.xpath("//div[@class='basket__" +
+                "product-box']//form"));
         System.out.println(krepselioSarasas.size());
 
-        String sql = "INSERT INTO pirkiniuKrepselis(produkto_pavadinimas, skelbimo_ID, kaina, prekiu_likutis_sandelyje," +
-                " paveiksliukas) VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pirkiniuKrepselis(produkto_pavadinimas, skelbimo_ID, kaina, " +
+                "prekiu_likutis_sandelyje,paveiksliukas) VALUES(?, ?, ?, ?, ?)";
         PreparedStatement pstmt = DbConnection.prisijungimasPrieDB(sql);
         DbConnection.testasDB();
 
@@ -115,18 +116,20 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
                 pstmt.setString(5, styleAttribute);
 
                 pstmt.executeUpdate();
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         // koreguojamas prekiu kiekis
-        List<WebElement> produktuSarasas = driver.findElements(By.xpath("//div[@class='basket__product-box']//form"));
+        List<WebElement> produktuSarasas = driver.findElements(By.xpath("//div[@class='basket__" +
+                "product-box']//form"));
         try {
             for (int i = 0; i < produktuSarasas.size(); i++) {
                 if (i == 0 || i == 2) {
-                    WebElement pliusoMygtukas = produktuSarasas.get(i).findElement(By.cssSelector("body > main > div.basket__container.container > div.basket__product-box > form > div.basket-item__count > div.counter.basket-item__counter > button.counter__mark.active.js--plus"));
+                    WebElement pliusoMygtukas = produktuSarasas.get(i).findElement(By.cssSelector("body > main >" +
+                            " div.basket__container.container > div.basket__product-box > form > div.basket-item__" +
+                            "count > div.counter.basket-item__counter > button.counter__mark.active.js--plus"));
                     pliusoMygtukas.click();
                     Thread.sleep(2000);
                 }
@@ -138,9 +141,9 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
         // spaudziamas naikinimo mygtukas
         List<WebElement> produktuSarasas2 = driver.findElements(By.cssSelector("div.basket__product-box form"));
         try {
-            // spaudziamas nainikimo mygtukas
             for (WebElement product : produktuSarasas2) {
-                WebElement addButton = product.findElement(By.cssSelector("body > main > div.basket__container.container > div.basket__product-box > form:nth-child(1) > button > svg > use"));
+                WebElement addButton = product.findElement(By.cssSelector("body > main > div.basket__container." +
+                        "container > div.basket__product-box > form:nth-child(1) > button > svg > use"));
                 addButton.click();
                 Thread.sleep(2000);
             }

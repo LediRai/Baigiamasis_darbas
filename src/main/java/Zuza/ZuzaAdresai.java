@@ -25,7 +25,8 @@ public class ZuzaAdresai extends ZuzaDraiveriai {
     private final static By fPavarde = By.cssSelector("#deliveries-update > div:nth-child(5) > input");
     private final static By fPastas = By.cssSelector("#deliveries-update > div:nth-child(6) > input");
     private final static By fTelNr = By.cssSelector("#deliveries-update > div:nth-child(7) > input");
-    private final static By fMiestas = By.cssSelector("#deliveries-update > div:nth-child(8) > div:nth-child(2) > input");
+    private final static By fMiestas = By.cssSelector("#deliveries-update > div:nth-child(8) > div:nth-child(2) >" +
+            " input");
     private final static By fAdresas = By.cssSelector("#deliveries-update > div:nth-child(8) > div." +
             "user-delivery__box.form-profile__box.form-group.js--person-address > input");
     private final static By fPastoKodas = By.cssSelector("#deliveries-update > div:nth-child(8) > " +
@@ -66,8 +67,8 @@ public class ZuzaAdresai extends ZuzaDraiveriai {
 
             WebElement pastoKodasF = wait.until(ExpectedConditions.visibilityOfElementLocated(fPastoKodas));
             pastoKodasF.sendKeys("41820");
-            Thread.sleep(2000);
-
+            Thread.sleep(1000);
+//            paslenkamas puslapis kad butu matomas irasymo mygtukas
             WebElement irasymoMygtukas = wait.until(ExpectedConditions.elementToBeClickable(fMygtukas));
             jse.executeScript("arguments[0].scrollIntoView();", irasymoMygtukas);
             Thread.sleep(1000);

@@ -26,20 +26,11 @@ public class DbConnection extends ZuzaDraiveriai {
                     "kaina VARCHAR(250)," +
                     "prekiu_likutis_sandelyje VARCHAR(250),"+
                     "paveiksliukas VARCHAR(250))";
-//
-//            String megstamiausiuSarasas = "CREATE TABLE megstamisusiuSarasas " +
-//                    "(id SERIAL PRIMARY KEY," +
-//                    "produkto_pavadinimas VARCHAR(250)," +
-//                    "kaina INT," +
-//                    "prekiu_likutis_sandelyje INT,"+
-//                    "paveiksliukas VARCHAR(250))" ;;
 
             System.out.println("1.1");
             stmt.executeUpdate(pirkiniuKrepselis);
-//            stmt.executeUpdate(megstamiausiuSarasas);
             try (Statement statement = connection.createStatement()) {
                 statement.executeUpdate(pirkiniuKrepselis);
-//                statement.executeUpdate(megstamiausiuSarasas);
                 System.out.println("Sekmingai sukurtos lenteles");
             }
         } catch (SQLException e) {

@@ -19,61 +19,67 @@ public class ZuzaMeniu extends ZuzaDraiveriai {
 
     public static void testuoju() {
 
-        ArrayList<tikrinamasLinkas> virsus = new ArrayList<tikrinamasLinkas>();
-        virsus.add(new tikrinamasLinkas("Apmokėjimas", "https://zuza.lt/pages/apmokejimas/"));
-        virsus.add(new tikrinamasLinkas("Pristatymas", "https://zuza.lt/pages/pristatymas/"));
-        virsus.add(new tikrinamasLinkas("Grąžinimas ir garantija", "https://zuza.lt/return-and-warranty/"));
-        virsus.add(new tikrinamasLinkas("Apie Zuza.lt", "https://zuza.lt/pages/apie-zuzalt/"));
-        virsus.add(new tikrinamasLinkas("Karjera", "https://zuza.lt/pages/karjera/"));
-        virsus.add(new tikrinamasLinkas("KLIX Mokėjimas dalimis", "https://zuza.lt/pages/klix-mokejimas-dalimis/"));
-        virsus.add(new tikrinamasLinkas("Kontaktai", "https://zuza.lt/kontaktai/"));
+        ArrayList<TikrinamaNuoroda> virsus = new ArrayList<TikrinamaNuoroda>();
+        virsus.add(new TikrinamaNuoroda("Apmokėjimas", "https://zuza.lt/pages/apmokejimas/"));
+        virsus.add(new TikrinamaNuoroda("Pristatymas", "https://zuza.lt/pages/pristatymas/"));
+        virsus.add(new TikrinamaNuoroda("Grąžinimas ir garantija", "https://zuza.lt/" +
+                "return-and-warranty/"));
+        virsus.add(new TikrinamaNuoroda("Apie Zuza.lt", "https://zuza.lt/pages/apie-zuzalt/"));
+        virsus.add(new TikrinamaNuoroda("Karjera", "https://zuza.lt/pages/karjera/"));
+        virsus.add(new TikrinamaNuoroda("KLIX Mokėjimas dalimis", "https://zuza.lt/pages/" +
+                "klix-mokejimas-dalimis/"));
+        virsus.add(new TikrinamaNuoroda("Kontaktai", "https://zuza.lt/kontaktai/"));
 
-        ArrayList<tikrinamasLinkas> apacia = new ArrayList<tikrinamasLinkas>();
-        apacia.add(new tikrinamasLinkas("Prekių pristatymas", "https://zuza.lt/pages/prekiu-pristatymas/"));
-        apacia.add(new tikrinamasLinkas("Pirkimo sąlygos ir taisyklės", "https://zuza.lt/pages/pirkimo-salygos-ir-taisykles/"));
-        apacia.add(new tikrinamasLinkas("Privatumo politika", "https://zuza.lt/pages/privatumo-politika/"));
-        apacia.add(new tikrinamasLinkas("Atsiliepimai", "https://zuza.lt/pages/atsiliepimai/"));
 
+        ArrayList<TikrinamaNuoroda> apacia = new ArrayList<TikrinamaNuoroda>();
+        apacia.add(new TikrinamaNuoroda("Prekių pristatymas", "https://zuza.lt/pages/prekiu-" +
+                "pristatymas/"));
+        apacia.add(new TikrinamaNuoroda("Pirkimo sąlygos ir taisyklės", "https://zuza.lt/" +
+                "pages/pirkimo-salygos-ir-taisykles/"));
+        apacia.add(new TikrinamaNuoroda("Privatumo politika", "https://zuza.lt/pages/" +
+                "privatumo-politika/"));
+        apacia.add(new TikrinamaNuoroda("Atsiliepimai", "https://zuza.lt/pages/atsiliepimai/"));
 
         try {
-            for (tikrinamasLinkas tikrinimas : virsus) {
-                verifyNavigationLink(driver, tikrinimas.getLinkLabel(), tikrinimas.getLinkUrl());
+            for (TikrinamaNuoroda nuoroda : virsus) {
+                verifyNavigationLink(driver, nuoroda.getNuorodosTekstas(), nuoroda.getNuorodosUrl());
             }
             jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
             Thread.sleep(2000);
 
-            for (tikrinamasLinkas tikrinimas : apacia) {
-                verifyNavigationLink(driver, tikrinimas.getLinkLabel(), tikrinimas.getLinkUrl());
+            for (TikrinamaNuoroda nuoroda : apacia) {
+                verifyNavigationLink(driver, nuoroda.getNuorodosTekstas(), nuoroda.getNuorodosUrl());
             }
         } catch (Exception e) {
             System.out.println("neveikia");
         }
     }
 
+    //kodas aprašo vidinę TikrinamaNuoroda klasę, kuri yra naudojama saugoti nuorodas ir jų teksto pavadinimus:
     // apsirasomos klases
-    static class tikrinamasLinkas {
-        private String linkLabel;
-        private String linkUrl;
+    static class TikrinamaNuoroda {
+        private String nuorodosTekstas;
+        private String nuorodosUrl;
 
         //konstruktorius
-        public tikrinamasLinkas(String linkLabel, String linkUrl) {
-            this.linkLabel = linkLabel;
-            this.linkUrl = linkUrl;
+        public TikrinamaNuoroda(String nuorodosTekstas, String nuorodosUrl) {
+            this.nuorodosTekstas = nuorodosTekstas;
+            this.nuorodosUrl = nuorodosUrl;
         }
 
-        public String getLinkLabel() {
-            return linkLabel;
+        public String getNuorodosTekstas() {
+            return nuorodosTekstas;
         }
 
-        public String getLinkUrl() {
-            return linkUrl;
+        public String getNuorodosUrl() {
+            return nuorodosUrl;
         }
     }
 
+    //verifyNavigationLink metodas, kuris tikrina nuorodų perėjimus:
     public static void verifyNavigationLink(WebDriver driver, String linkText, String expctedLink) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
-
             WebElement link = wait.until(ExpectedConditions.elementToBeClickable(By.linkText(linkText)));
             Thread.sleep(2000);
             link.click();
@@ -82,7 +88,8 @@ public class ZuzaMeniu extends ZuzaDraiveriai {
                 System.out.println();
                 System.out.println(("PASS: " + linkText + " -> Navigation successfully"));
             } else {
-                System.out.println("FAIL:" + linkText + "Navigation faild " + "Expected: " + expctedLink + "Actual: " + actualLinkURL);
+                System.out.println("FAIL:" + linkText + "Navigation faild " + "Expected: " + expctedLink +
+                        "Actual: " + actualLinkURL);
             }
             Thread.sleep(2000);
             driver.navigate().back();

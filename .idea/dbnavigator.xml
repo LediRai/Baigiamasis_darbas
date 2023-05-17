@@ -12,9 +12,8 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="e4a0972f-83c6-47b8-84b4-2e0bc78427a2">
-      <console name="Connection" type="STANDARD" schema="zuzaLentele" session="Main"><![CDATA[SELECT * from pirkiniuKrepselis
---delete from products]]></console>
+    <connection id="24179498-0b67-46fc-b364-711672f89748">
+      <console name="Connection 1" type="STANDARD" schema="zuzaLentele" session="Main"><![CDATA[select * from pirkiniukrepselis]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -24,8 +23,18 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="e4a0972f-83c6-47b8-84b4-2e0bc78427a2" dataset="public.produktukrepselis" active-filter-id="" />
-    <filter-actions connection-id="e4a0972f-83c6-47b8-84b4-2e0bc78427a2" dataset="public.pirkiniukrepselis" active-filter-id="" />
+    <filter-actions connection-id="24179498-0b67-46fc-b364-711672f89748" dataset="public.pirkiniukrepselis" active-filter-id="" />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <argument-values-cache />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -33,13 +42,13 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="e4a0972f-83c6-47b8-84b4-2e0bc78427a2" active="true" signed="true">
+      <connection id="24179498-0b67-46fc-b364-711672f89748" active="true" signed="true">
         <database>
-          <name value="Zuza Pirkiniu Krepselis" />
+          <name value="Connection 1" />
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="15.2" />
+          <database-version value="9999.0" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />

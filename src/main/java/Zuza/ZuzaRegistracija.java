@@ -32,7 +32,7 @@ public class ZuzaRegistracija extends ZuzaDraiveriai {
     static JavascriptExecutor jse = (JavascriptExecutor) driver;
 
     public static void slapukas() {
-        WebElement slapukas = driver.findElement(By.cssSelector("body > footer > div.footer__cookies.cookies.js--cookies.active > div > button"));
+        WebElement slapukas = driver.findElement(By.xpath("/html/body/footer/div[4]/div/button"));
         slapukas.click();
     }
 
