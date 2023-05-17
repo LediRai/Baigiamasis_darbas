@@ -26,7 +26,7 @@ public class ZuzaTest extends ZuzaDraiveriai {
 //    @BeforeClass
 //    public static void setUpChrome() {
 
-        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/chromedriver/chromedriver");
+//        System.setProperty("Webdriver.chrome.driver", "/Users/Raimonda/Downloads/chromedriver/chromedriver");
 //        System.setProperty("webdriver.chrome.driver", "C:/Users/XPS 15/Downloads/chromedriver_win32 (1)/" +
 //                "chromedriver.exe");
 //        ChromeOptions options = new ChromeOptions();
@@ -43,17 +43,7 @@ public class ZuzaTest extends ZuzaDraiveriai {
         options.addArguments("--disable-notifications");
         ZuzaDraiveriai.driver = new FirefoxDriver(options);
         ZuzaDraiveriai.driver.manage().window().maximize();
-
-//    @BeforeClass
-//    public static void setUpFirefox() {
-//        System.setProperty("Webdriver.gecko.driver", "/Users/Raimonda/Downloads/geckodriver");
-////         System.setProperty("Webdriver.gecko.driver", "C:/Users/XPS 15/Downloads/geckodriver-v0.33.0-win32/" +
-////                 "geckodriver");
-//        FirefoxOptions options = new FirefoxOptions();
-//        options.addArguments("--disable-notifications");
-//        ZuzaDraiveriai.driver = new FirefoxDriver(options);
-//        ZuzaDraiveriai.driver.manage().window().maximize();
-//    }
+    }
 
     @Test
     public void A_blogaRegistracija() {
