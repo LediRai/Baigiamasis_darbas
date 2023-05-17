@@ -42,15 +42,15 @@ Selenium bibliotekos WebDriver įrankis pasitelktas automatizuoti „Chrome“ i
 2. sėkmingas/ nesėkmingas prisijungimas,
 3. sukurto profilio redagavimas bei slaptažodžio keitimas,
 4. pristatymo adreso suvedimas,
-5. sukurtos paskyros naikinimas,
-6. prekių paieška,
+5. prekių paieška,
+6. mėgstamiausių prekių sąrašo sudarymas ir panaikinimas,
 7. pirkinių krepšelio papildymas bei ištrynimas,
-8. mėgstamiausių prekių sąrašo sudarymas ir panaikinimas,
-9. prekės grąžinimas,
-10. užklausa dėl nepateikto užsakymo,
-11. Meniu skiltis
+8. prekės grąžinimas,
+9. užklausa dėl nepateikto užsakymo,
+10. Meniu skiltis,
+11. sukurtos paskyros naikinimas.
 
-Taip pat sėkmingai surastos prekės bei mėgstamiausių prekių sąrašas turi pasiekti sukurtą duomenų bazę, naudojant „PostgreSQL“.
+Taip pat sėkmingai surastos prekės turi pasiekti sukurtą duomenų bazę, naudojant „PostgreSQL“.
 
 
 **Techniniai reikalavimai**
@@ -67,10 +67,22 @@ Testų paleidimas užtikrinamas šiame projekte naudojant ir įdiegiant naujausi
 
 **Įdiegimas**
 
+Įsidiekite integruotą kūrimo aplinką "IntelliJ IDEA", kad galėtumėte naudotis šios saugyklos kodu ir paleisti testus. Tai galite padaryti svetainėje: https://www.jetbrains.com/idea/download/#section=windows.
+Galite pasirinkti nemokamą versiją: "IntelliJ IDEA Community Edition". Svarbu diegiant programą pasirinkti visas asociacijas.
+
+
+**Konfigūracija**
+
+Prieš testų paleidimą reikia įsitikinti, kad būtų įdiegti naujausių versijų  naršyklių „paleidėjai“ (drivers). Juos galime atsisiųsti paspaudus ant šių nuorodų:
+https://chromedriver.chromium.org/downloads
+https://github.com/mozilla/geckodriver/releases
+Kai naršyklių „paleidėjai“ (drivers) įdiegti jūsų kompiuterių operacinėse sistemose, nukopijuokite jų direktorijas ir atnaujinkite jas šio projekto testų paleidimo klasėje „ZuzaTestai“.
+
+
+**Testų paleidimas**
 
 1. Šią saugyklą reikia nuklonuoti jūsų Java paleidimo mašinoje:
 https://github.com/LediRai/Baigiamasis_darbas
-
 
 ```
 git clone https://github.com/LediRai/Baigiamasis_darbas.git
@@ -87,19 +99,6 @@ cd Baigiamasis_darbas
 ```
 mvn install
 ```
-
-
-**Konfigūracija**
-
-Prieš testų paleidimą reikia įsitikinti, kad būtų įdiegti naujausių versijų  naršyklių „paleidėjai“ (drivers). Juos galime atsisiųsti paspaudus ant šių nuorodų:
-https://chromedriver.chromium.org/downloads
-Laidos · Mozilla/Geckodriver (github.com)
-Kai naršyklių „paleidėjai“ (drivers) įdiegti jūsų kompiuterių operacinėse sistemose, nukopijuokite jų direktorijas ir atnaujinkite jas šio projekto testų paleidimo klasėje „ZuzaTestai“.
-
-
-**Testų paleidimas**
-
-Command prompt arba kitokį terminalą būti projekto viduje ir paleisti šitą komandą: jar cfm YourJarName.jar manifest.txt com example/*.class ir pasileis jar
 
 
 **Jūsų indėlis**

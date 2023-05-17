@@ -37,14 +37,15 @@ public class ZuzaPrekesGrazinimas extends ZuzaDraiveriai {
     public final static By saskaita = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[5]/input");
     public final static By usakymoNumeris = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[6]/input");
     public final static By uzsakymoData = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[7]/input");
-    public final static By prekesPavadinimas = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[8]/input");
+    public final static By prekesPavadinimas = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[8]" +
+            "/input");
     public final static By prekesKodas = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[9]/input");
     public final static By kiekis = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[10]/input");
-    public final static By grazinimoPriezastis = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[11]/label[4]/span[2]");
-    public final static By pakuotesStatusas = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[12]/label[2]/span[2]");
+    public final static By grazinimoPriezastis = By.xpath("//*[@id=\"return-and-warranty-form\"]/div" +
+            "[11]/label[4]/span[2]");
+    public final static By pakuotesStatusas = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[12]" +
+            "/label[2]/span[2]");
     public final static By zinute = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[13]/textarea");
-
-    //    public final static By skaitytiTaisykles = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[14]/label");
     public final static By sutiktiSuTaisyklem = By.xpath("//*[@id=\"return-and-warranty-form\"]/div[14]");
     public final static By pateiktiForma = By.xpath("/html/body/main/div[2]/div[2]/form/div[14]/button");
 
@@ -56,7 +57,6 @@ public class ZuzaPrekesGrazinimas extends ZuzaDraiveriai {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         try {
-
             WebElement grazinimoIrGarantijosMygtukas = driver.findElement(grąžinimas);
             grazinimoIrGarantijosMygtukas.click();
 
@@ -99,19 +99,15 @@ public class ZuzaPrekesGrazinimas extends ZuzaDraiveriai {
             kiekioSuvedimas.sendKeys("2");
             kiekioSuvedimas.submit();
 
-
             try {
-
                 WebElement priezastiesPateikimas = driver.findElement(grazinimoPriezastis);
                 jse.executeScript("arguments[0].scrollIntoView();", priezastiesPateikimas);
                 wait.until(ExpectedConditions.elementToBeClickable(priezastiesPateikimas));
                 Thread.sleep(1000);
                 priezastiesPateikimas.click();
-
             } catch (Exception e) {
                 System.out.println("Grazinimo priezastis nepasirinkta: " + e.getMessage());
             }
-
 
             WebElement pakuote = driver.findElement(pakuotesStatusas);
             wait.until(ExpectedConditions.elementToBeClickable(pakuote));
@@ -119,34 +115,20 @@ public class ZuzaPrekesGrazinimas extends ZuzaDraiveriai {
 
             WebElement zinutesIvestis = driver.findElement(zinute);
             wait.until(ExpectedConditions.elementToBeClickable(zinutesIvestis));
-            zinutesIvestis.sendKeys("Laba diena, norėčiau grąžinti prekę dėl aukščiau nurodytos priežasties.");
+            zinutesIvestis.sendKeys("Laba diena, norėčiau grąžinti prekę dėl aukščiau nurodytos " +
+                    "priežasties.");
             Thread.sleep(3000);
             zinutesIvestis.submit();
 
-//        try {
-//            WebElement taisykles = driver.findElement(skaitytiTaisykles);
-//            jse.executeScript("arguments[0].scrollIntoView();", taisykles);
-//            wait.until(ExpectedConditions.visibilityOf(taisykles));
-//            Thread.sleep(2000);
-//            taisykles.click();
-//
-//
-//        } catch (Exception e) {
-//            System.out.println("Pritarimo mygtukas nepaspaustas: " + e.getMessage());
-//        }
-
             try {
-
                 WebElement pritarimasTaisyklems = driver.findElement(sutiktiSuTaisyklem);
                 jse.executeScript("arguments[0].scrollIntoView();", pritarimasTaisyklems);
                 wait.until(ExpectedConditions.visibilityOf(pritarimasTaisyklems));
                 Thread.sleep(3000);
                 pritarimasTaisyklems.click();
-
             } catch (Exception e) {
                 System.out.println("Pritarimo taisyklems mygtukas nepaspaustas: " + e.getMessage());
             }
-
 
             try {
                 WebElement formosPateikimas = driver.findElement(pateiktiForma);
@@ -154,54 +136,23 @@ public class ZuzaPrekesGrazinimas extends ZuzaDraiveriai {
                 wait.until(ExpectedConditions.elementToBeClickable(formosPateikimas));
                 Thread.sleep(3000);
                 formosPateikimas.click();
-
             } catch (Exception e) {
                 System.out.println("Formos pateikimas negalimas: " + e.getMessage());
             }
-
 
         } catch (Exception e) {
             System.out.println("Forma pateikta neteisingai" + e.getMessage());
         }
     }
 
-
     public static void puslapioPaveikslelis() throws InterruptedException {
 
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
-//        try {
-//            WebElement tiksliVieta = driver.findElement(By.xpath("//*[@id=\"return-and-warranty-form\"]/h3[2]"));
-//            jse.executeScript("arguments[0].scrollIntoView();", tiksliVieta);
-//            wait.until(ExpectedConditions.visibilityOf(tiksliVieta));
-//            Thread.sleep(3000);
-//            tiksliVieta.click();
-//        } catch (Exception e){
-//            System.out.println("Tiksli vieta nepasiekta: " + e.getMessage());
-//        }
-
-//        try {
-//            TakesScreenshot screenshot = (TakesScreenshot) driver;
-//            File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
-//            BufferedImage screenshotImage = ImageIO.read(screenshotFile);
-//
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-//            String timestamp = dateFormat.format(new Date());
-//            String fileName = "screenshot_" + timestamp + ".png";
-//
-//            ImageIO.write(screenshotImage, "png", new File(fileName));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
-
+        //paeiti į puslapio vidury
         jse.executeScript("window.scrollTo(0, 200)");
         Thread.sleep(3000);
         WebElement vieta = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/form/div[5]"));
         jse.executeScript("arguments[0].scrollIntoView();", vieta);
         Thread.sleep(3000);
-
 
         try {
             TakesScreenshot screenshot = (TakesScreenshot) driver;
@@ -222,10 +173,8 @@ public class ZuzaPrekesGrazinimas extends ZuzaDraiveriai {
         } catch (WebDriverException e) {
             e.printStackTrace();
 
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
