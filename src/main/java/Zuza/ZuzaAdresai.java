@@ -33,7 +33,7 @@ public class ZuzaAdresai extends ZuzaDraiveriai {
             "div.user-delivery__box--code.form-profile__box.form-group.js--person-address > input");
     private final static By fMygtukas = By.cssSelector("#deliveries-update > button");
 
-    // fizinio asmens adresas
+    // pildomas fizinio asmens adresas
     public static void pridetiNaujaAdresaF() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -68,7 +68,8 @@ public class ZuzaAdresai extends ZuzaDraiveriai {
             WebElement pastoKodasF = wait.until(ExpectedConditions.visibilityOfElementLocated(fPastoKodas));
             pastoKodasF.sendKeys("41820");
             Thread.sleep(1000);
-//            paslenkamas puslapis kad butu matomas irasymo mygtukas
+
+            // paslenkamas puslapis, kad butu matomas irasymo mygtukas
             WebElement irasymoMygtukas = wait.until(ExpectedConditions.elementToBeClickable(fMygtukas));
             jse.executeScript("arguments[0].scrollIntoView();", irasymoMygtukas);
             Thread.sleep(1000);

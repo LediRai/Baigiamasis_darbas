@@ -53,6 +53,8 @@ public class ZuzaPrisijungimas extends Zuza.ZuzaDraiveriai {
             WebElement mygtukas = wait.until(ExpectedConditions.elementToBeClickable(prisijungimoMygtukas));
             mygtukas.click();
 
+            // tikrinama ar yra klaida suvedant ir pateikiant informacija, jei yra klaida daroma puslapio ekrano
+            //nuotrauka kurioje matoma klaida .
             List<WebElement> errorCode = driver.findElements(By.className("error-custom"));
             if (errorCode.size() > 0) {
                 File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

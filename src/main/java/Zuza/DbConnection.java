@@ -1,13 +1,10 @@
 package Zuza;
 
-import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.WebDriver;
 
 import java.sql.*;
 
-public class DbConnection extends ZuzaDraiveriai {
-    public DbConnection(WebDriver driver) {
-        super(driver);
-    }
+public class DbConnection {
 
     public static void main(String[] args) {
         //pirmas try prisijungimas tikrinamas, ar nera klaidu
@@ -16,19 +13,15 @@ public class DbConnection extends ZuzaDraiveriai {
         String password = "labas123";
 
         try {
-            System.out.println("1");
             Connection connection = DriverManager.getConnection(url, user, password);
-            Statement stmt = connection.createStatement();
             String pirkiniuKrepselis = "CREATE TABLE pirkiniuKrepselis " +
                     "(id SERIAL PRIMARY KEY," +
                     "produkto_pavadinimas VARCHAR(250)," +
-                    "Skelbimo_ID VARCHAR(250),"+
-                    "kaina VARCHAR(250)," +
-                    "prekiu_likutis_sandelyje VARCHAR(250),"+
+                    "Skelbimo_ID VARCHAR(250)," +
+                    "kaina INT," +
+                    "prekiu_likutis_sandelyje VARCHAR(250)," +
                     "paveiksliukas VARCHAR(250))";
 
-            System.out.println("1.1");
-            stmt.executeUpdate(pirkiniuKrepselis);
             try (Statement statement = connection.createStatement()) {
                 statement.executeUpdate(pirkiniuKrepselis);
                 System.out.println("Sekmingai sukurtos lenteles");
@@ -37,6 +30,7 @@ public class DbConnection extends ZuzaDraiveriai {
             e.printStackTrace();
         }
     }
+
     public static PreparedStatement prisijungimasPrieDB(String sql) {
         String url = "jdbc:postgresql://localhost/zuzaLentele";
         String user = "postgres";
@@ -64,4 +58,3 @@ public class DbConnection extends ZuzaDraiveriai {
         }
     }
 }
-

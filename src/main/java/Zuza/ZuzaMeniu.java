@@ -41,12 +41,16 @@ public class ZuzaMeniu extends ZuzaDraiveriai {
         apacia.add(new TikrinamaNuoroda("Atsiliepimai", "https://zuza.lt/pages/atsiliepimai/"));
 
         try {
+            // Patikriname virsutines sekcijos nuorodas
             for (TikrinamaNuoroda nuoroda : virsus) {
                 verifyNavigationLink(driver, nuoroda.getNuorodosTekstas(), nuoroda.getNuorodosUrl());
             }
+
+            // Slinkame į puslapio apačią
             jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
             Thread.sleep(2000);
 
+            // Patikriname apatinės sekcijos nuorodas
             for (TikrinamaNuoroda nuoroda : apacia) {
                 verifyNavigationLink(driver, nuoroda.getNuorodosTekstas(), nuoroda.getNuorodosUrl());
             }

@@ -6,7 +6,7 @@ import java.time.Duration;
 
 public class ZuzaDraiveriai {
     protected static WebDriver driver;
-    // protected static WebDriver firefoxDriver;
+
 
     public ZuzaDraiveriai(WebDriver driver) {
 

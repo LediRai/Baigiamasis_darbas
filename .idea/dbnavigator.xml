@@ -12,8 +12,8 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="24179498-0b67-46fc-b364-711672f89748">
-      <console name="Connection 1" type="STANDARD" schema="zuzaLentele" session="Main"><![CDATA[select * from pirkiniukrepselis]]></console>
+    <connection id="7b339380-8335-405f-9fdb-3351246b6ca0">
+      <console name="Connection" type="STANDARD" schema="public" session="Pool"><![CDATA[select * from pirkiniukrepselis]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -40,15 +40,20 @@
     <last-used-operator value="EQUAL" />
     <filters />
   </component>
+  <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
+    <recently-used-interfaces>
+      <mapping database-type="POSTGRES" interface-id="DEFAULT" />
+    </recently-used-interfaces>
+  </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="24179498-0b67-46fc-b364-711672f89748" active="true" signed="true">
+      <connection id="7b339380-8335-405f-9fdb-3351246b6ca0" active="true" signed="true">
         <database>
-          <name value="Connection 1" />
+          <name value="Connection" />
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="15.2" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />

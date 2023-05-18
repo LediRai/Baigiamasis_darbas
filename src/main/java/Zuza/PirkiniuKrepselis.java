@@ -18,7 +18,7 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
 
     public PirkiniuKrepselis(WebDriver driver) {
         super(driver);
-        db = new DbConnection(driver);
+        db = new DbConnection();
     }
 
     private final static By produktoPavadinimas = By.className("basket-item__name");
@@ -32,7 +32,7 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
 
     public static void zuzaPirkiniai() throws SQLException {
 
-        String[] paieska = {"ledinis sviestuvas", "molinis puodas","badmintono rakete", "patalyne","nuotrauku remelis"};
+        String[] paieska = {"ledinis sviestuvas", "molinis puodas", "badmintono rakete","patalyne","nuotrauku remelis"};
         //"A27368416674", "A22595987182","A27363951782"
 
         // prekiu paieskos ciklas per masyvo elementus
@@ -44,7 +44,7 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
             ieskoti.clear();
             ieskoti.sendKeys(i);
             ieskoti.submit();
-
+//            Ciklas, kuris vykdo prekių pridėjimą į krepšelį ir tęsia apsipirkimą.
             try {
                 Thread.sleep(1000);
                 List<WebElement> pirkti = driver.findElements(By.className("card__wrapper"));
@@ -105,13 +105,14 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
                 String prekesKaina = preke.findElement(kaina).getText();
                 String idSkelbimo = preke.findElement(skelbimoID).getText();
                 String prekiuLikutis = preke.findElement(likutis).getText();
-                int kiekisVnt = Integer.parseInt(prekesKaina.replaceAll("\\D+", ""));
+                int kainaInt = Integer.parseInt(prekesKaina.replaceAll("\\D+", ""));
                 WebElement paveiksliukoVieta = preke.findElement(paveiksliukas);
                 String styleAttribute = paveiksliukoVieta.getAttribute("src");
 
+                assert pstmt != null;
                 pstmt.setString(1, prekesPavadinimas);
                 pstmt.setString(2, idSkelbimo);
-                pstmt.setString(3, prekesKaina);
+                pstmt.setInt(3, kainaInt);
                 pstmt.setString(4, prekiuLikutis);
                 pstmt.setString(5, styleAttribute);
 
@@ -152,4 +153,3 @@ public class PirkiniuKrepselis extends ZuzaDraiveriai {
         }
     }
 }
-

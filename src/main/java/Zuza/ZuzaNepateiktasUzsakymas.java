@@ -12,6 +12,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.time.Duration;
 
 public class ZuzaNepateiktasUzsakymas extends ZuzaDraiveriai {
@@ -82,7 +83,7 @@ public class ZuzaNepateiktasUzsakymas extends ZuzaDraiveriai {
 
             // failo suradimas kompiuteryje pateikiant direktoriją ir jo pridėjimas
 //            String filePath = "\"C:\\Users\\XPS 15\\Documents\\GitHub\\Baigiamasis_darbas\\PAVYZDYS.png\"";
-            String filePath = "/Users/Raimonda/Downloads/PAVYZDYS.png";
+            String filePath = "/Users/Raimonda/PAVYZDYS.png";
             Transferable transferable = new StringSelection(filePath);
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(transferable, null);

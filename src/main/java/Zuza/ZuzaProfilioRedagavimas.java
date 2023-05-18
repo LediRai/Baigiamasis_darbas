@@ -2,12 +2,9 @@ package Zuza;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-
-import static org.junit.Assert.assertEquals;
 
 public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
 
@@ -15,7 +12,7 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
     public final static By profilioRedagavimoMygtukas = By.cssSelector("body > main > div.user__container.container " +
             "> div.user__main > div > a");
 
-        static JavascriptExecutor jse = (JavascriptExecutor) driver;
+    static JavascriptExecutor jse = (JavascriptExecutor) driver;
 
 
     public ZuzaProfilioRedagavimas(WebDriver driver) {
@@ -26,6 +23,7 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
     public static void profilioRedagavimas() {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
 
         try {
             WebElement profilis = driver.findElement(profilioPasiekimas);
@@ -38,10 +36,10 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             WebElement lytiesLokacija = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div" +
                     "[2]/div/div[1]/button"));
             lytiesLokacija.click();
-
-            WebElement lytisVyras = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div[2]" +
-                    "/div/div[2]/div/div/div[2]"));
-            lytisVyras.click();
+            //lyties pasirinkimas
+            WebElement lytisVyras = driver.findElement(By.xpath("//*[@id=\"profile-update\"]/div" +
+                    "[2]/div/div[2]/div/div/div[2]"));
+            jse.executeScript("arguments[0].click();", lytisVyras);
 
             // gimimos datos ivedimas
             WebElement gimimoData = driver.findElement(By.xpath("//input[@placeholder='YYYY-MM-DD']"));
@@ -111,6 +109,4 @@ public class ZuzaProfilioRedagavimas extends ZuzaPrisijungimas {
             System.out.println("Slaptazodzio keitimas nesekmingas: " + r.getMessage());
         }
     }
-
-
 }
