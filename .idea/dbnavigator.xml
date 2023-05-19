@@ -13,7 +13,8 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="7b339380-8335-405f-9fdb-3351246b6ca0">
-      <console name="Connection" type="STANDARD" schema="public" session="Pool"><![CDATA[select * from pirkiniukrepselis]]></console>
+      <console name="Connection" type="STANDARD" schema="public" session="Pool"><![CDATA[select * from pirkiniukrepselis
+--delete from pirkiniukrepselis]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -23,7 +24,7 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="24179498-0b67-46fc-b364-711672f89748" dataset="public.pirkiniukrepselis" active-filter-id="" />
+    <filter-actions connection-id="7b339380-8335-405f-9fdb-3351246b6ca0" dataset="public.pirkiniukrepselis" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

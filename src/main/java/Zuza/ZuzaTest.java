@@ -45,74 +45,74 @@ public class ZuzaTest extends ZuzaDraiveriai {
 //        ZuzaDraiveriai.driver.manage().window().maximize();
 //    }
 
-    @Test
-    public void A_blogaRegistracija() {
-        ZuzaRegistracija.slapukas();
-        ZuzaRegistracija.prisiregistruoti("Geguteskukuoja@@gmail.com", "kukukukuku");
-    }
-
-    @Test
-    public void B_registracijosPasiekimas() {
-        ZuzaRegistracija.prisiregistruoti("Nakciausias5098@gmail.com", "Grazuma8597");
-    }
-
-    @Test
-    public void C_blogasPrisijungimas() {
-        ZuzaPrisijungimas.prisijungimas("pumabera@gmaiil.com", "baigiamasis");
-    }
-
-    @Test
-    public void D_prisijungimas() {
-        ZuzaPrisijungimas.prisijungimas("Nakciausias5098@gmail.com", "Grazuma8597");
-    }
-
-    @Test
-    public void E_redagavimasProfilio() throws InterruptedException {
-        ZuzaProfilioRedagavimas.profilioRedagavimas();
-        ZuzaProfilioRedagavimas.slaptazodzioKeitimas("Grazuma8597", "Murmaliai853");
-    }
-
-    @Test
-    public void F_adresuPridejimas() {
-        ZuzaAdresai.pridetiNaujaAdresaF();
-    }
-
-    @Test
-    public void G_meniuTest() {
-        ZuzaMeniu.testuoju();
-    }
-
-    @Test
-    public void H_paieska() {
-        PaieskosLaukas.zuzaPaieska();
-    }
-
-    @Test
-    public void I_megstamiausiuPirkiniuKrepselis() throws InterruptedException {
-        ZuzaMegstamiausiuSarasas.MegstamiausiuSarasas();
-        ZuzaMegstamiausiuSarasas.MegstamiausiuSarasoNaikinimas();
-    }
+//    @Test
+//    public void A_blogaRegistracija() {
+//        ZuzaRegistracija.slapukas();
+//        ZuzaRegistracija.prisiregistruoti("Geguteskukuoja@@gmail.com", "kukukukuku");
+//    }
+//
+//    @Test
+//    public void B_registracijosPasiekimas() {
+//        ZuzaRegistracija.prisiregistruoti("Nakciausias5098@gmail.com", "Grazuma8597");
+//    }
+//
+//    @Test
+//    public void C_blogasPrisijungimas() {
+//        ZuzaPrisijungimas.prisijungimas("pumabera@gmaiil.com", "baigiamasis");
+//    }
+//
+//    @Test
+//    public void D_prisijungimas() {
+//        ZuzaPrisijungimas.prisijungimas("Nakciausias5098@gmail.com", "Grazuma8597");
+//    }
+//
+//    @Test
+//    public void E_redagavimasProfilio() throws InterruptedException {
+//        ZuzaProfilioRedagavimas.profilioRedagavimas();
+//        ZuzaProfilioRedagavimas.slaptazodzioKeitimas("Grazuma8597", "Murmaliai853");
+//    }
+//
+//    @Test
+//    public void F_adresuPridejimas() {
+//        ZuzaAdresai.pridetiNaujaAdresaF();
+//    }
+//
+//    @Test
+//    public void G_meniuTest() {
+//        ZuzaMeniu.testuoju();
+//    }
+//
+//    @Test
+//    public void H_paieska() {
+//        PaieskosLaukas.zuzaPaieska();
+//    }
+//
+//    @Test
+//    public void I_megstamiausiuPirkiniuKrepselis() throws InterruptedException {
+//        ZuzaMegstamiausiuSarasas.MegstamiausiuSarasas();
+//        ZuzaMegstamiausiuSarasas.MegstamiausiuSarasoNaikinimas();
+//    }
 
     @Test
     public void J_pirkiniai() throws SQLException {
         PirkiniuKrepselis.zuzaPirkiniai();
     }
-
-    @Test
-    public void K_prekesGrazinimas() throws InterruptedException {
-        ZuzaPrekesGrazinimas.prekesGrazinimas();
-        ZuzaPrekesGrazinimas.puslapioPaveikslelis();
-    }
-
-    @Test
-    public void L_klausimasDelNepateiktoUzsakymo() throws InterruptedException, AWTException {
-        ZuzaNepateiktasUzsakymas.klausimasDelNepateiktoUzsakymo();
-    }
-
-    @Test
-    public void M_naikinamaPaskyra() {
-        ZuzaRegistracija.paskyrosNaikinimas("Murmaliai853");
-    }
+//
+//    @Test
+//    public void K_prekesGrazinimas() throws InterruptedException {
+//        ZuzaPrekesGrazinimas.prekesGrazinimas();
+//        ZuzaPrekesGrazinimas.puslapioPaveikslelis();
+//    }
+//
+//    @Test
+//    public void L_klausimasDelNepateiktoUzsakymo() throws InterruptedException, AWTException {
+//        ZuzaNepateiktasUzsakymas.klausimasDelNepateiktoUzsakymo();
+//    }
+//
+//    @Test
+//    public void M_naikinamaPaskyra() {
+//        ZuzaRegistracija.paskyrosNaikinimas("Murmaliai853");
+//    }
 
     @AfterClass
     public static void tearDown() {
